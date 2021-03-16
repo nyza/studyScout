@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #ffffff;
 }
 
 .App-logo {
@@ -14,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,6 +28,51 @@
 .App-link {
   color: #61dafb;
 }
+.drop_box {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+ .input_box{
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display:inline-block;
+      border: 1px solid rgb(185, 44, 44);
+      border-radius: 25px;
+      box-sizing: border-box;
+     }
+.study_card{
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display:inline-block;
+      border: 1px solid rgb(247, 247, 247);
+      border-radius: 25px;
+      box-sizing: border-box;
+      background-color: #84D8D8;
+  }
+
+  .text_study{
+    color:#000000;
+    font-weight:400;
+  }
+
+  .submit{
+    width: 25%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
 
 @keyframes App-logo-spin {
   from {

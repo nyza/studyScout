@@ -2,27 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import StudyCard from "./components/Study_Card"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Study Scout!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       
+       
+       
+        <StudyCard/>
       </header>
-      <AmplifySignOut />
+      {/* <AmplifySignOut /> */}
     </div>
   );
 }
 
-export default withAuthenticator(App);
+// export default withAuthenticator(App);
+export default App;
+
