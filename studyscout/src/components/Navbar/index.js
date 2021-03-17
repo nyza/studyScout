@@ -1,20 +1,22 @@
 import React from 'react'
 import {Nav, NavLink, Bars, NavBtn, NavBtnLink} from './NavbarElements';
 import logo from '../../images/logo.png'
+
 const Navbar = () => {
     return (
         <>
          <Nav>
 
-             <Bars />
+             {/* <Bars /> */}
 
-             <NavLink to="/home">
+             <NavLink to="/">
                  <img src={logo} alt={"logo"} />
              </NavLink>
-        
+
+          
 
              <NavBtn>
-                 <NavBtnLink to="/create-card">New Card</NavBtnLink>
+                 <NavBtnLink to="/studyCard" >New Card</NavBtnLink>
              </NavBtn>
 
              <NavBtn>

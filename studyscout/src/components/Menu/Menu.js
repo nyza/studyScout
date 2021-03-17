@@ -10,6 +10,10 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="profile"></span>
         Profile
       </a>
+      <a href="/studyCard">
+        <span role="img" aria-label="profile"></span>
+        create card
+      </a>
       <a href="/">
         <span role="img" aria-label="my study cards"></span>
         My Study Cards

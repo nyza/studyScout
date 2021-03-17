@@ -1,14 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useRef } from 'react';
 import { useOnClickOutside } from './hooks';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './global';
 import { theme } from './theme';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { withAuthenticator} from '@aws-amplify/ui-react'
+import StudyCard from "./StudyCards/Study_Card"
 import Navbar from './components/Navbar';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import { Burger, Menu } from '../src/components';
+
 
 
 
@@ -18,24 +18,36 @@ function App() {
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
   return (
+    
     <ThemeProvider theme={theme}>
-      <>
-         <GlobalStyles />
-        <div>
+       <>
+        <div className="App">
           <Router>
+        
+            <div>
+
             <Navbar />
+            {/* <h1>Welcome to Study Scout!</h1> */}
+              <Switch>
+                <Route exact path="/">
+                </Route>
+                <Route exact path="/studyCard">
+                  <StudyCard />
+                </Route>
+              </Switch>
+            </div>
           </Router>
-      </div>
-        <div style={{textAlign:"center"}}>
-          <h1>Welcome to Study Scout!</h1>
-        </div>
-        <div ref={node}>
+          <div>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
+        
         </div>
-      </>
+       </div>
+         
+       </>
     
-    </ThemeProvider>
+     
+   </ThemeProvider> 
     
     
   );
