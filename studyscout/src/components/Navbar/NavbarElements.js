@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import {NavLink as Link} from 'react-router-dom';
-import {FaBars} from 'react-icons/fa';
 
 export const Nav = styled.nav`
     background: #ffffff ;
+    border-bottom: 5;
     height: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding 0.5rem calc((100vw - 1000px) / 2);
     z-index: 10;
+    border-bottom: 3px solid #707070;
 `
 
 export const NavLink = styled(Link)`
@@ -24,20 +25,6 @@ export const NavLink = styled(Link)`
         color: #15cdfc;
     }
 `
-// Hamburger button stlye
-export const Bars = styled(FaBars)`
-    display: flex;
-    color: #707070;
-    align-items: center;
-    text-descordation: none;
-    padding: 0 2rem;
-    height: 2000px
-    transform: translate(-100%, 100%);
-    margin: 10px;
-    font-size: 3rem;
-
-`
-
 
 export const NavBtn = styled.nav`
     display: flex;

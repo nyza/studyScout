@@ -6,10 +6,8 @@ import { theme } from './theme';
 import { withAuthenticator} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card"
 import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Burger, Menu } from '../src/components';
-
-
 
 
 
@@ -38,8 +36,8 @@ function App() {
             </div>
           </Router>
           <div>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
+{/*           <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} /> */}
         
         </div>
        </div>

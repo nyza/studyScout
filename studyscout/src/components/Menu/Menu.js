@@ -18,7 +18,7 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="my study cards"></span>
         My Study Cards
         </a>
-      <a href="/">
+      <a href="https://ucae.uncc.edu/academic-support-services/tutoring">
         <span role="img" aria-label="tutoring center"></span>
         Tutoring Center
         </a>

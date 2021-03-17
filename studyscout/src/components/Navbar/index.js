@@ -1,19 +1,26 @@
-import React from 'react'
-import {Nav, NavLink, Bars, NavBtn, NavBtnLink} from './NavbarElements';
+import {React, useState, useRef} from 'react';
+import {Nav, NavLink, NavBtn, NavBtnLink} from './NavbarElements';
+import { useOnClickOutside } from '../../hooks';
 import logo from '../../images/logo.png'
+import Burger from '../Burger';
+import Menu from '../Menu';
 
 const Navbar = () => {
+    const [open, setOpen] = useState(false);
+    const node = useRef();
+   useOnClickOutside(node, () => setOpen(false));
     return (
         <>
          <Nav>
-
-             {/* <Bars /> */}
+             
+             <div>
+             <Burger open={open} setOpen={setOpen} />
+             <Menu open={open} setOpen={setOpen} />
+             </div>
 
              <NavLink to="/">
                  <img src={logo} alt={"logo"} />
              </NavLink>
-
-          
 
              <NavBtn>
                  <NavBtnLink to="/studyCard" >New Card</NavBtnLink>
@@ -22,6 +29,7 @@ const Navbar = () => {
              <NavBtn>
                  <NavBtnLink to="/profile"> Profile</NavBtnLink>
              </NavBtn>
+             
          </Nav>   
         </>
     )
