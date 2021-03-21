@@ -1,6 +1,5 @@
 import React, { Component} from "react";
 import "./App.css";
-import "./Registration.css";
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^-_{|}`~]+@[a-zA-Z0-9-]+(?:\.[a-z-Z]+)*$/);
 
@@ -29,6 +28,7 @@ class Registration extends Component {
                 lastName: null,
                 password: null,
                 email: null,
+                addClass: "",
                 formErrors: {
                     firstName: "",
                     lastName: "",
@@ -156,6 +156,18 @@ class Registration extends Component {
                     {formErrors.email.length > 0 && (
                         <span className="errorMessage">{formErrors.email}</span>
                     )}
+                  </div>
+
+                  <div className="addClass">
+                      <select className="drop_box" value={this.state.drop} 
+                        name="drop" onChange={this.handleChange} >
+                            <option value="graptfruit">Grapefruit</option>
+                            <option value="lemon">Lemon</option>
+                            <option value="orange">Orange</option>
+                            <option value="mango">Mango</option>
+                            <option value="avocado">Avocado</option>
+                        </select>
+
                   </div>
 
                   <div className="createAccount">
