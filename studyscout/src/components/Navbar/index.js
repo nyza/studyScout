@@ -27,7 +27,7 @@ const Navbar = () => {
              </NavBtn>
 
              <NavBtn>
-                 <NavBtnLink to="/profile"> Profile</NavBtnLink>
+                 <NavBtnLink to="/popout"> Profile</NavBtnLink>
              </NavBtn>
              
          </Nav>   

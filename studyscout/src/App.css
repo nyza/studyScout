@@ -56,19 +56,53 @@
       box-sizing: border-box;
       background-color: #84D8D8;
   }
+  .popout_card{
+    width: 35%;
+    margin: 13px 12px 12px 10px;
+    display:inline-block;
+    border: 1px solid rgba(247, 247, 247, 0);
+    border-radius: 25px;
+    box-sizing: border-box;
+    border-color: rgb(136, 131, 131);
+    background-color: #a2ecbb;
+    text-align:center;
+}
 
   .text_study{
     color:#000000;
-    font-weight:400;
+    font-weight:500;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-style:normal;
   }
 
+
+.container{
+    text-align: center;
+    display: inline-block;
+    position:relative;
+}
+
+.container2 {
+    width: 35%;
+    margin: 13px 12px 12px 10px;
+    border: 1px solid rgba(247, 247, 247, 0);
+    border-radius: 25px;
+    box-sizing: border-box;
+    border-color: rgb(136, 131, 131);
+    background-color: #a2ecbb;
+    display: inline-block;
+}
+
+
   .submit{
-    width: 25%;
+    width: 150px;
+    height: 40px;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+    margin: 13px 12px 12px 10px;
+    border:#000000;
     border-radius: 4px;
     cursor: pointer;
   }
