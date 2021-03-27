@@ -8,6 +8,7 @@ import StudyCard from "./StudyCards/Study_Card"
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Burger, Menu } from '../src/components';
+import UserProfile from "./ProfilePage/UserProfile"
 
 
 
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route exact path="/studyCard">
                   <StudyCard />
+                </Route>
+                <Route exact path="/UserProfile">
+                  <UserProfile />
                 </Route>
               </Switch>
             </div>
