@@ -8,10 +8,6 @@ import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-//import { Component } from 'react';
-
-
-
 
 
 function App() {
@@ -33,12 +29,13 @@ function App() {
             <Navbar />
               <Switch>
                 <Route exact path="/">
+                <PopOut/>
                 </Route>
                 <Route exact path="/studyCard">
                   <StudyCard />
                 </Route>
-                <Route exact path="/popout">
-                  <PopOut/>
+                <Route exact path="/profile">
+
                 </Route>
               </Switch>
             </div>

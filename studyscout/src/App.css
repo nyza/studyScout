@@ -42,7 +42,7 @@
       padding: 12px 20px;
       margin: 8px 0;
       display:inline-block;
-      border: 1px solid rgb(185, 44, 44);
+      border: 1px solid rgb(29, 28, 28);
       border-radius: 25px;
       box-sizing: border-box;
      }
@@ -55,6 +55,7 @@
       border-radius: 25px;
       box-sizing: border-box;
       background-color: #84D8D8;
+      
   }
   .popout_card{
     width: 35%;
@@ -64,7 +65,7 @@
     border-radius: 25px;
     box-sizing: border-box;
     border-color: rgb(136, 131, 131);
-    background-color: #a2ecbb;
+    background-color: #e6d92c;
     text-align:center;
 }
 

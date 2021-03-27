@@ -1,0 +1,18 @@
+type Cards
+  @model
+  @auth(
+    rules: [
+      {allow: owner, ownerField: "owner", operations: [create, update, delete]},
+    ])
+{
+  id: ID!
+  courseName: String
+  contentName: String!
+  hostName: String
+  date: String!
+  time:String
+  meetingLink: String!
+  capacity: String!
+}
+
+  
