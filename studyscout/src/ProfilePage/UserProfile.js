@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 
-class UserProfile extends Component{
+class ProfilePage extends Component{
     constructor(props) {
-        super(props)
-
+        super(props);
         this.state = {
             Name: "",
             EmailAddress: "",
@@ -42,5 +41,5 @@ class UserProfile extends Component{
 
 }
 
-export default UserProfile
+export default ProfilePage
 
