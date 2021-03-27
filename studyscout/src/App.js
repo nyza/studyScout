@@ -5,10 +5,10 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { withAuthenticator} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card"
+import UserProfile from "./ProfilePage/UserProfile"
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Burger, Menu } from '../src/components';
-import UserProfile from "./ProfilePage/UserProfile"
 
 
 

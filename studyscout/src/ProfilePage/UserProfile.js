@@ -11,10 +11,10 @@ class UserProfile extends Component{
             Bio: "",
             ClassList: "",
         };
-        this.handleSave=this.handleSave.bind(this)
+        this.handleChange=this.handleChange.bind(this)
     }
 
-    handleSave(event){
+    handleChange(event){
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -24,13 +24,13 @@ class UserProfile extends Component{
         return (
             <div className="UserProfile">
                 <form>
-               <input className="display_box" type="text" name="Name" value={this.state.Name} onSave={this.handleSave} placeholder="Name"/>
+               <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name"/>
                <br/>
-               <input className="display_box" type="text" name="Email Address" value={this.state.EmailAddress} onSave={this.handleSave} placeholder="Email Address"/>
+               <input className="display_box" type="text" name="Email Address" value={this.state.EmailAddress} onChange={this.handleChange} placeholder="Email Address"/>
                <br/>
-               <input className="input_box" type="text" name="Password" value={this.state.Password} onSave={this.handleSave} placeholder="Password"/>
+               <input className="input_box" type="text" name="Password" value={this.state.Password} onChange={this.handleChange} placeholder="Password"/>
                <br/>
-               <input className="input_box" type="text" name="Bio" value={this.state.Bio} onSave={this.handleSave} placeholder="User Bio"/>
+               <input className="input_box" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="User Bio"/>
                <br/>
                <input className="Submit" type="Submit" value="Save" />
                <br/>
