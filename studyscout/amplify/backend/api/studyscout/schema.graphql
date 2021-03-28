@@ -1,0 +1,13 @@
+type Cards
+  @model
+  id: ID!
+  courseName: String
+  contentName: String!
+  hostName: String
+  date: String!
+  time:String
+  meetingLink: String!
+  capacity: String!
+}
+
+  
