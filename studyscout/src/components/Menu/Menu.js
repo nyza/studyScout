@@ -3,6 +3,8 @@ import React from 'react';
 import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 import { AmplifySignOut } from '@aws-amplify/ui-react'
+
+
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>

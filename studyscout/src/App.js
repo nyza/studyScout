@@ -10,12 +10,13 @@ import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
+
+
 function App() {
 
   const [ setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  console.log('ejnfj');
  
   return (
     
@@ -35,15 +36,11 @@ function App() {
                   <StudyCard />
                 </Route>
                 <Route exact path="/profile">
-
                 </Route>
               </Switch>
             </div>
           </Router>
           <div>
-{/*           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} /> */}
-        
         </div>
        </div>
          

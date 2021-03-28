@@ -49,11 +49,11 @@
 .study_card{
       width: 50%;
       padding: 12px 20px;
-      margin: 8px 0;
+      margin: 20px 20px ;
       display:inline-block;
       border: 1px solid rgb(247, 247, 247);
       border-radius: 25px;
-      box-sizing: border-box;
+      box-sizing:content-box;
       background-color: #84D8D8;
       
   }

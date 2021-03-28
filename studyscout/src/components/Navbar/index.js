@@ -4,6 +4,10 @@ import { useOnClickOutside } from '../../hooks';
 import logo from '../../images/logo.png'
 import Burger from '../Burger';
 import Menu from '../Menu';
+import Popup from 'reactjs-popup';
+// import StudyCard from '../../StudyCards/Study_Card';
+import popUp from '../../StudyCards/Popup';
+import StudyCard from '../../StudyCards/Study_Card';
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -23,7 +27,7 @@ const Navbar = () => {
              </NavLink>
 
              <NavBtn>
-                 <NavBtnLink to="/studyCard" >New Card</NavBtnLink>
+                 <NavBtnLink to="/studyCard"> New Card</NavBtnLink>
              </NavBtn>
 
              <NavBtn>
