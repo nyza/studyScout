@@ -1,5 +1,6 @@
 type Cards
   @model
+  {
   id: ID!
   courseName: String
   contentName: String!

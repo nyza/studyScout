@@ -35,6 +35,7 @@ class PopOut extends Component{
       };
 
     async componentDidMount(){
+        console.log("inside component did mount")
         try{
             const apiData = await API.graphql(graphqlOperation(listCardss))
             const response = apiData.data.listCardss.items
