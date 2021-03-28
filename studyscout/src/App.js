@@ -14,9 +14,9 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
 
-  // const [ setOpen] = useState(false);
-  // const node = useRef();
-  // useOnClickOutside(node, () => setOpen(false));
+  const [ setOpen] = useState(false);
+  const node = useRef();
+  useOnClickOutside(node, () => setOpen(false));
  
   return (
     
@@ -52,7 +52,7 @@ function App() {
     
   );
 }
-export default App;
+export default withAuthenticator(App);
 
 
 
