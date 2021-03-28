@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import "./App.css";
+import "../App.css";
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^-_{|}`~]+@[a-zA-Z0-9-]+(?:\.[a-z-Z]+)*$/);
 
@@ -181,6 +181,7 @@ class Registration extends Component {
 
     }
 
-export; default; Registration 
+
 
 }
+export default Registration
