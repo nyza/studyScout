@@ -11,10 +11,14 @@ type Cards
   capacity: String!
 }
 
-type Todo @model @auth(rules: [ {allow: owner } ]) {
+type User @model {
   id: ID!
-  name: String!
-  description: String
+  username: String!
+  avatar: S3Object
 }
 
-  
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}  

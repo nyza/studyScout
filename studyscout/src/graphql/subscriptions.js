@@ -52,39 +52,48 @@ export const onDeleteCards = /* GraphQL */ `
     }
   }
 `;
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo($owner: String!) {
-    onCreateTodo(owner: $owner) {
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
       id
-      name
-      description
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo($owner: String!) {
-    onUpdateTodo(owner: $owner) {
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
       id
-      name
-      description
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo($owner: String!) {
-    onDeleteTodo(owner: $owner) {
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
       id
-      name
-      description
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
