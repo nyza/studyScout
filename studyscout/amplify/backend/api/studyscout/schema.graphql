@@ -1,5 +1,5 @@
 type Cards
-  @model
+  @model @auth(rules: [ {allow: owner } ]) 
   {
   id: ID!
   courseName: String
@@ -9,6 +9,12 @@ type Cards
   time:String
   meetingLink: String!
   capacity: String!
+}
+
+type Todo @model @auth(rules: [ {allow: owner } ]) {
+  id: ID!
+  name: String!
+  description: String
 }
 
   
