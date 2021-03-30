@@ -24,7 +24,6 @@ export default function DateAndTimePickers() {
         id="datetime-local"
         label="Time + Date"
         type="datetime-local"
-        defaultValue="2017-05-24T10:30"
         className="input_box"
         InputLabelProps={{
           shrink: true,

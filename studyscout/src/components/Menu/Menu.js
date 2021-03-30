@@ -2,7 +2,9 @@
 import React from 'react';
 import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { AmplifySignOut } from '@aws-amplify/ui-react'
+
+
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
@@ -12,9 +14,9 @@ const Menu = ({ open }) => {
       </a>
       <a href="/studyCard">
         <span role="img" aria-label="profile"></span>
-        create card
+        Create Card
       </a>
-      <a href="/">
+      <a href="/myStudyCards">
         <span role="img" aria-label="my study cards"></span>
         My Study Cards
       </a>

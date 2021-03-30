@@ -1,0 +1,24 @@
+type Cards
+  @model @auth(rules: [ {allow: owner } ]) 
+  {
+  id: ID!
+  courseName: String
+  contentName: String!
+  hostName: String
+  date: String!
+  time:String
+  meetingLink: String!
+  capacity: String!
+}
+
+type User @model {
+  id: ID!
+  username: String!
+  avatar: S3Object
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}  
