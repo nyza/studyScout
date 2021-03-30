@@ -190,7 +190,7 @@ input.error {
 }
 
 .Registration button {
-  background-color: #519e8a;
+  background-color: #11352b;
   color: #fff;
   border: 2px solid #fff;
   width: 100%;
@@ -203,9 +203,9 @@ input.error {
 }
 
 .Registration button:hover {
-  color: #325f53;
+  color: #033528;
   background-color: rgb(207, 181, 181);
-  border: 2px solid #366b5d;
+  border: 2px solid #055f47;
 }
 
 .Registration small {

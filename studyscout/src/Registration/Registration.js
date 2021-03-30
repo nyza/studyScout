@@ -159,13 +159,15 @@ class Registration extends Component {
                   </div>
 
                   <div className="addClass">
+                    <label htmlFor="select class">Select Class</label>
                       <select className="drop_box" value={this.state.drop} 
                         name="drop" onChange={this.handleChange} >
-                            <option value="graptfruit">Grapefruit</option>
-                            <option value="lemon">Lemon</option>
-                            <option value="orange">Orange</option>
-                            <option value="mango">Mango</option>
-                            <option value="avocado">Avocado</option>
+                            <option value="itcs-4325">ITCS-4325</option>
+                            <option value="itcs-5432">ITCS-5432</option>
+                            <option value="itis-3320">ITIS-3320</option>
+                            <option value="itis-4420">ITIS-4420</option>
+                            <option value="itsc-4155">ITSC-4155</option>
+                            
                         </select>
 
                   </div>
