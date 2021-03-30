@@ -3,13 +3,12 @@ import React, { useState, useRef } from 'react';
 import { useOnClickOutside } from './hooks';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
-import { withAuthenticator} from '@aws-amplify/ui-react'
+import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-
-
+import Profile from "./components/Profile";
 
 
 function App() {
@@ -36,6 +35,7 @@ function App() {
                   <StudyCard />
                 </Route>
                 <Route exact path="/profile">
+                  <Profile />
                 </Route>
               </Switch>
             </div>
@@ -53,13 +53,3 @@ function App() {
   );
 }
 export default withAuthenticator(App);
-
-
-
-
-
-
-
-
-
-

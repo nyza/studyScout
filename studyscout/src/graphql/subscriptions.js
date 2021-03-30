@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCards = /* GraphQL */ `
-  subscription OnCreateCards {
-    onCreateCards {
+  subscription OnCreateCards($owner: String!) {
+    onCreateCards(owner: $owner) {
       id
       courseName
       contentName
@@ -14,12 +14,13 @@ export const onCreateCards = /* GraphQL */ `
       capacity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateCards = /* GraphQL */ `
-  subscription OnUpdateCards {
-    onUpdateCards {
+  subscription OnUpdateCards($owner: String!) {
+    onUpdateCards(owner: $owner) {
       id
       courseName
       contentName
@@ -30,12 +31,13 @@ export const onUpdateCards = /* GraphQL */ `
       capacity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteCards = /* GraphQL */ `
-  subscription OnDeleteCards {
-    onDeleteCards {
+  subscription OnDeleteCards($owner: String!) {
+    onDeleteCards(owner: $owner) {
       id
       courseName
       contentName
@@ -44,6 +46,52 @@ export const onDeleteCards = /* GraphQL */ `
       time
       meetingLink
       capacity
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
       createdAt
       updatedAt
     }

@@ -14,6 +14,7 @@ export const getCards = /* GraphQL */ `
       capacity
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -33,6 +34,44 @@ export const listCardss = /* GraphQL */ `
         time
         meetingLink
         capacity
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      username
+      avatar {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        avatar {
+          bucket
+          region
+          key
+        }
         createdAt
         updatedAt
       }
