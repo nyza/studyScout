@@ -103,12 +103,20 @@
     background-color: #4CAF50;
     color: white;
     margin: 13px 12px 12px 10px;
-    border:#000000;
-    border-radius: 4px;
     cursor: pointer;
+    border: none; 
+    border-radius: 6%;
   }
   
 
+  .Link{
+    color:#000000;
+    font-weight:500;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-style:normal;
+  }
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
