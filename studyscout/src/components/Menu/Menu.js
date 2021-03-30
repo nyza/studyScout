@@ -6,7 +6,7 @@ import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <a href="/">
+      <a href="/Profile">
         <span role="img" aria-label="profile"></span>
         Profile
       </a>
@@ -17,7 +17,8 @@ const Menu = ({ open }) => {
       <a href="/">
         <span role="img" aria-label="my study cards"></span>
         My Study Cards
-        </a>
+      </a>
+      
       <a href="https://ucae.uncc.edu/academic-support-services/tutoring">
         <span role="img" aria-label="tutoring center"></span>
         Tutoring Center

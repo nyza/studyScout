@@ -33,7 +33,7 @@ function App() {
                 <Route exact path="/studyCard">
                   <StudyCard />
                 </Route>
-                <Route exact path="/UserProfile">
+                <Route exact path="/Profile">
                   <ProfilePage />
                 </Route>
               </Switch>
