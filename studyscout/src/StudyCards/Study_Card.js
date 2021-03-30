@@ -1,4 +1,5 @@
 import React, {Component}from 'react'
+import { Link } from 'react-router-dom'
 import {createCards} from '../graphql/mutations'
 import API, { graphqlOperation } from '@aws-amplify/api';
 import {onCreateCards} from '../graphql/subscriptions'
@@ -58,6 +59,7 @@ class StudyCard extends Component{
             this.setState({
                 cards, hostName:'',contentName:'', courseName:'', capacity:'',meetingLink:'',date:''})
             await API.graphql(graphqlOperation(createCards, {input:card}))
+            
             console.log('cards created')
 
         }catch(err){
@@ -91,7 +93,9 @@ class StudyCard extends Component{
                <br/>
                <input className="input_box"  name="capacity" value={this.state.capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
-               <button className="submit" onClick={this.createCards}> Create Card </button>
+               <button className="submit">
+                    <Link to='' onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Create Card </Link>
+               </button>
            </div>
            </div>
         )

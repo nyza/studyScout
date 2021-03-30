@@ -41,12 +41,10 @@ class ProfilePage extends Component{
                         "ITCS-4112", 
                         "ITCS-3162",
                         "STAT-3150",
-                        "ITIS-3130"].map((i,j)=>{
-                            return <option key={i} value={i}>{i}
-                            </option>
-                            
+                        "ITIS-3130"]
+                        .map((i,j)=>{
+                            return <option key={i} value={i}>{i}</option>
                         })
-                        
                    }
                 </select>
               </div>    

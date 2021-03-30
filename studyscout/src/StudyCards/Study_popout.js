@@ -64,7 +64,7 @@ class PopOut extends Component{
         }
     }
 
-    
+
     render(){
       
         return(
@@ -79,7 +79,7 @@ class PopOut extends Component{
                <h3 className="text_study">{card.meetingLink}</h3>
                <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.capacity} Spots Remaining</h3>
                <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button>
-               <button className="submit" onClick={()=> this.deleteCards(card.id)}> Remove </button>
+               <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button>
                
                </div>
            ))}
