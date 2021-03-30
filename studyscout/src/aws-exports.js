@@ -13,8 +13,9 @@ const awsmobile = {
     "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
     "aws_appsync_apiKey": "da2-fakeApiId123456",
     "aws_appsync_dangerously_connect_to_http_endpoint_for_testing": true,
-    "aws_user_files_s3_bucket": "studyscout7cd0119a23d74e2ca4dbd50b3fd47127161706-dev",
-    "aws_user_files_s3_bucket_region": "us-east-1"
+    "aws_user_files_s3_bucket": "studyscout7cd0119a23d74e2ca4dbd50b3fd47127-dev",
+    "aws_user_files_s3_bucket_region": "us-east-1",
+    "aws_user_files_s3_dangerously_connect_to_http_endpoint_for_testing": true
 };
 
 

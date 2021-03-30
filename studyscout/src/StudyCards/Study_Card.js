@@ -95,7 +95,7 @@ class StudyCard extends Component{
                <input className="input_box"  name="capacity" value={this.state.capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
                <button className="submit">
-                    <Link to='' onClick={this.createCards} > Create Card </Link>
+                    <Link to='' onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Create Card </Link>
                </button>
            </div>
            </div>
