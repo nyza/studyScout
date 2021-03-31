@@ -9,8 +9,8 @@ import PopOut from "./StudyCards/Study_popout";
 import ProfilePage from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Profile from "./components/Profile";
-import ProfilePage from "./ProfilePage/ProfilePage";
+// import Profile from "./components/Profile";
+// import ProfilePage from "./ProfilePage/ProfilePage";
 
 function App() {
 

@@ -96,7 +96,6 @@
     display: inline-block;
 }
 
-
   .submit{
     width: 150px;
     height: 40px;
@@ -135,7 +134,7 @@
 
 .display_box1 {
   width: 70%;
-  height: 18vh ;
+  height: 16vh ;
   padding: 12px 20px;
   margin: 20px 50px 30px;
   display: block;
@@ -145,7 +144,7 @@
   box-sizing:content-box;
 }
 
-.display_box2 {
+/* .display_box2 {
   width: 70%;
   height: 18vh ;
   padding: 12px 20px;
@@ -155,7 +154,7 @@
   border: 1px solid rgb(17, 17, 17);
   border-radius: 10px;
   box-sizing:content-box;
-}
+} */
 
 .column {
   float: left;
@@ -172,7 +171,32 @@
   margin: 20px 10px;
 }
 
+.button {
+  background-color: #71ce74; 
+  border: none;
+  margin-right: 20%;
+  color: rgb(5, 5, 5);
+  padding: 15px 32px;
+  text-align: center;
+  display:inline-block;
+  font-size: 16px;
+}
 
+.button1 {
+  background-color: #ca5353;
+  border:#000000;
+  color: rgb(10, 10, 10);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration:solid;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.profile_photo{
+  margin-left: 130%;
+  margin-top: 0;
+}
 
   .Link{
     color:#000000;
@@ -182,6 +206,8 @@
     justify-content: center;
     font-style:normal;
   }
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

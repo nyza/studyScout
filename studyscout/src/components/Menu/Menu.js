@@ -14,7 +14,7 @@ const Menu = ({ open }) => {
       </a>
       <a href="/studyCard">
         <span role="img" aria-label="profile"></span>
-        profile
+        testprofile
       </a>
       <a href="/myStudyCards">
         <span role="img" aria-label="my study cards"></span>
