@@ -11,7 +11,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Profile from "./components/Profile";
 import ProfilePage from "./ProfilePage/ProfilePage";
 
-
 function App() {
 
   const [ setOpen] = useState(false);
@@ -41,6 +40,9 @@ function App() {
                 <Route exact path="/profilePage">
                   <ProfilePage />
                 </Route>
+                <Route exact path="/myStudyCards">
+                  <PopOut />
+                </Route>
               </Switch>
             </div>
           </Router>
@@ -50,10 +52,8 @@ function App() {
          
        </>
     
-     
    </ThemeProvider> 
-    
-    
+
   );
 }
 export default withAuthenticator(App);
