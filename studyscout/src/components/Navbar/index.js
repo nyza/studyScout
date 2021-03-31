@@ -5,6 +5,7 @@ import logo from '../../images/logo.png'
 import Burger from '../Burger';
 import Menu from '../Menu';
 
+
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const node = useRef();
@@ -23,11 +24,11 @@ const Navbar = () => {
              </NavLink>
 
              <NavBtn>
-                 <NavBtnLink to="/studyCard" >New Card</NavBtnLink>
+                 <NavBtnLink to="/studyCard"> New Card</NavBtnLink>
              </NavBtn>
 
              <NavBtn>
-                 <NavBtnLink to="/profile"> Profile</NavBtnLink>
+                 <NavBtnLink to="/popout"> Profile</NavBtnLink>
              </NavBtn>
              
          </Nav>   

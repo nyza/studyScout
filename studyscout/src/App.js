@@ -3,18 +3,20 @@ import React, { useState, useRef } from 'react';
 import { useOnClickOutside } from './hooks';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
-import { withAuthenticator} from '@aws-amplify/ui-react'
-import StudyCard from "./StudyCards/Study_Card"
+import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
+import StudyCard from "./StudyCards/Study_Card";
+import PopOut from "./StudyCards/Study_popout";
 import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import { Burger, Menu } from '../src/components';
-import Registration from './Registration/Registration'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Profile from "./components/Profile";
 
 
 function App() {
-  const [open, setOpen] = useState(false);
+
+  const [ setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
+ 
   return (
     
     
@@ -28,23 +30,23 @@ function App() {
             <div>
 
             <Navbar />
-            {/* <h1>Welcome to Study Scout!</h1> */}
               <Switch>
                 <Route exact path="/">
+                <PopOut/>
                 </Route>
                 <Route exact path="/studyCard">
                   <StudyCard />
                 </Route>
                 <Route exact path="/Registration">
                   <Registration />
+                  </Route> 
+                <Route exact path="/profile">
+                  <Profile />
                 </Route>
               </Switch>
             </div>
           </Router>
           <div>
-{/*           <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} /> */}
-        
         </div>
        </div>
          
@@ -57,13 +59,3 @@ function App() {
   );
 }
 export default withAuthenticator(App);
-
-
-
-
-
-
-
-
-
-
