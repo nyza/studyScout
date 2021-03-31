@@ -5,6 +5,7 @@ import { createUser as CreateUser } from '../../graphql/mutations'
 import { listUsers } from '../../graphql/queries'
 import { onCreateUser } from '../../graphql/subscriptions'
 import config from '../../aws-exports'
+import ProfilePage from '../../ProfilePage/ProfilePage'
 
 const {
   aws_user_files_s3_bucket_region: region,
@@ -16,7 +17,7 @@ const initialState = {
 }
 
 function reducer(state, action) {
-  switch(action.type) {
+  switch (action.type) {
     case 'SET_USERS':
       return { ...state, users: action.users }
     case 'ADD_USER':
@@ -42,43 +43,43 @@ function Profile() {
     try {
       const imageData = await Storage.get(key)
       updateAvatarUrl(imageData)
-    } catch(err) {
+    } catch (err) {
       console.log('error: ', err)
     }
   }
 
   async function fetchUsers() {
     try {
-     let users = await API.graphql(graphqlOperation(listUsers))
-     users = users.data.listUsers.items
-     dispatch({ type: 'SET_USERS', users })
-    } catch(err) {
+      let users = await API.graphql(graphqlOperation(listUsers))
+      users = users.data.listUsers.items
+      dispatch({ type: 'SET_USERS', users })
+    } catch (err) {
       console.log('error fetching users')
     }
   }
 
   async function createUser() {
-    if (!username) return alert('please enter a username')
+    if (!username) return alert('please enter a label for your image')
     if (file && username) {
-        const { name: fileName, type: mimeType } = file  
-        const key = `${uuid()}${fileName}`
-        const fileForUpload = {
-            bucket,
-            key,
-            region,
-        }
-        const inputData = { username, avatar: fileForUpload }
+      const { name: fileName, type: mimeType } = file
+      const key = `${uuid()}${fileName}`
+      const fileForUpload = {
+        bucket,
+        key,
+        region,
+      }
+      const inputData = { username, avatar: fileForUpload }
 
-        try {
-          await Storage.put(key, file, {
-            contentType: mimeType
-          })
-          await API.graphql(graphqlOperation(CreateUser, { input: inputData }))
-          updateUsername('')
-          console.log('successfully stored user data!')
-        } catch (err) {
-          console.log('error: ', err)
-        }
+      try {
+        await Storage.put(key, file, {
+          contentType: mimeType
+        })
+        await API.graphql(graphqlOperation(CreateUser, { input: inputData }))
+        updateUsername('')
+        console.log('successfully stored user data!')
+      } catch (err) {
+        console.log('error: ', err)
+      }
     }
   }
   useEffect(() => {
@@ -94,15 +95,23 @@ function Profile() {
   }, [])
 
   return (
+
+
+
+
+    
     <div style={styles.container}>
+      <ProfilePage />
+
+      <div><h3>Profile Picture</h3></div>
       <input
         label="File to upload"
         type="file"
         onChange={handleChange}
-        style={{margin: '10px 0px'}}
+        style={{ margin: '10px 0px' }}
       />
       <input
-        placeholder='Username'
+        placeholder='My Profile Picture'
         value={username}
         onChange={e => updateUsername(e.target.value)}
       />
@@ -112,12 +121,15 @@ function Profile() {
       {
         state.users.map((u, i) => {
           return (
+
+
+
             <div
               key={i}
             >
               <p
                 style={styles.username}
-               onClick={() => fetchImage(u.avatar.key)}>{u.username}</p>
+                onClick={() => fetchImage(u.avatar.key)}>{u.username}</p>
             </div>
           )
         })

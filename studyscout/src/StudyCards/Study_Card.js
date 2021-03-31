@@ -61,7 +61,8 @@ class StudyCard extends Component{
             await API.graphql(graphqlOperation(createCards, {input:card}))
             
             console.log('cards created')
-
+          /* Remove this line of code when we figure out how subscriptions work */
+          window.location.reload();
         }catch(err){
             console.log('error: ', err)
         }
