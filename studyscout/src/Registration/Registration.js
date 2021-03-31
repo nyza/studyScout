@@ -162,8 +162,9 @@ class Registration extends Component {
                     <label htmlFor="select class">Select Class</label>
                       <select className="drop_box" value={this.state.drop} 
                         name="drop" onChange={this.handleChange} >
+                            <option value="none">NONE</option>
                             <option value="itcs-4325">ITCS-4325</option>
-                            <option value="itcs-5432">ITCS-5432</option>
+                            <option value="itcs-4400">ITCS-4400</option>
                             <option value="itis-3320">ITIS-3320</option>
                             <option value="itis-4420">ITIS-4420</option>
                             <option value="itsc-4155">ITSC-4155</option>
@@ -173,9 +174,13 @@ class Registration extends Component {
                   </div>
 
                   <div className="createAccount">
-                      <button type="submit">Create Account</button>
-                      <small>Already Have an Account?</small>
+                      <button type="submit">Create Account</button>                    
                   </div>
+
+                  <div className="alreadyHaveAccount">
+                    <button type="submit">Already Have an Account?</button>
+                  </div>
+
                 </form>
             </div>
           </div>

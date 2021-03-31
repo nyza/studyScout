@@ -7,9 +7,9 @@ import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
 import Navbar from './components/Navbar';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Profile from "./components/Profile";
-
+import Registration from './Registration/Registration';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
     <ThemeProvider theme={theme}>
        <>
         <div className="App">
-        
+      
           <Router>
           <Link to="/Registration">Registration</Link>
             <div>
