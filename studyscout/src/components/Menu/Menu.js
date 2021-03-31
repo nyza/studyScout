@@ -8,14 +8,19 @@ import { AmplifySignOut } from '@aws-amplify/ui-react'
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <a href="/profile">
+      <a href="/Profile">
+        <span role="img" aria-label="profile"></span>
+        Profile
+      </a>
+      <a href="/studyCard">
         <span role="img" aria-label="profile"></span>
         profile
       </a>
       <a href="/myStudyCards">
         <span role="img" aria-label="my study cards"></span>
         My Study Cards
-        </a>
+      </a>
+      
       <a href="https://ucae.uncc.edu/academic-support-services/tutoring">
         <span role="img" aria-label="tutoring center"></span>
         Tutoring Center

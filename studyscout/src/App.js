@@ -6,6 +6,7 @@ import { theme } from './theme';
 import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
+import ProfilePage from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Profile from "./components/Profile";
@@ -34,8 +35,8 @@ function App() {
                 <Route exact path="/studyCard">
                   <StudyCard />
                 </Route>
-                <Route exact path="/profile">
-                  <Profile />
+                <Route exact path="/Profile">
+                  <ProfilePage />
                 </Route>
                 <Route exact path="/profilePage">
                   <ProfilePage />

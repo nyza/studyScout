@@ -107,7 +107,72 @@
     border: none; 
     border-radius: 6%;
   }
-  
+
+  .Profile{
+    width: 80%;
+    height: 80vh;
+    margin: 12px 12px 12px 10px;
+    display:inline-block;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+    border: 1px solid rgb(247, 247, 247);
+    border-radius: 50px;
+    box-sizing: border-box;
+    background-color: #BEBFCB;
+
+}
+
+.display_box{
+  width: 70%;
+  height: 6vh ;
+  padding: 12px 20px;
+  margin: 20px 50px 30px;
+  display: block;
+  font-size: 16px;
+  border: 1px solid rgb(17, 17, 17);
+  border-radius: 10px;
+  box-sizing:content-box;
+}
+
+.display_box1 {
+  width: 70%;
+  height: 18vh ;
+  padding: 12px 20px;
+  margin: 20px 50px 30px;
+  display: block;
+  font-size: 16px;
+  border: 1px solid rgb(17, 17, 17);
+  border-radius: 10px;
+  box-sizing:content-box;
+}
+
+.display_box2 {
+  width: 70%;
+  height: 18vh ;
+  padding: 12px 20px;
+  margin: 20px 50px 30px;
+  display: block;
+  font-size: 16px;
+  border: 1px solid rgb(17, 17, 17);
+  border-radius: 10px;
+  box-sizing:content-box;
+}
+
+.column {
+  float: left;
+  width: 35%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.heading {
+  margin: 20px 10px;
+}
+
+
 
   .Link{
     color:#000000;
