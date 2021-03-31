@@ -64,7 +64,7 @@ class ProfilePage extends Component{
               </div>  
               <div class="column">
                 <label class="header"></label>
-                <img src="avatar.png" className="profile_photo" width="200" height="200" alt=""/>
+                <img src="./images/avatar.png" className="profile_photo" width="200" height="200" alt="ProfilePicture"/>
                 <input id="image" type="file" className="profile_photo" placeholder="Photo" capture></input> 
                 </div>
             </div>
