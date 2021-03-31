@@ -58,7 +58,8 @@ class PopOut extends Component{
             const newCardArray  = this.state.cards.filter(card => card.id !==id);
             this.state.cards= [newCardArray]
           await API.graphql(graphqlOperation(deleteCards, {input:input}));
-
+          /* Remove this line of code when we figure out how subscriptions work */
+          window.location.reload();
         }catch(err){
             console.log('error: ', err)
         }
