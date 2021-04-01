@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Multiselect } from 'multiselect-react-dropdown';
 
 class ProfilePage extends Component{
     constructor(props) {

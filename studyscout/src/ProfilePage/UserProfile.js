@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import { Multiselect } from 'multiselect-react-dropdown';
 import { Link } from 'react-router-dom'
+import avatar from '../images/avatar.png'
+
 
 
 class ProfilePage extends Component{
@@ -64,7 +66,7 @@ class ProfilePage extends Component{
               </div>  
               <div class="column">
                 <label class="header"></label>
-                <img src="./images/avatar.png" className="profile_photo" width="200" height="200" alt="ProfilePicture"/>
+                <img src={avatar} className="profile_photo" width="200" height="200" alt={avatar}/>
                 <input id="image" type="file" className="profile_photo" placeholder="Photo" capture></input> 
                 </div>
             </div>

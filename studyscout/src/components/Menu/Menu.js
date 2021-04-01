@@ -12,15 +12,10 @@ const Menu = ({ open }) => {
         <span role="img" aria-label="profile"></span>
         Profile
       </a>
-      <a href="/studyCard">
-        <span role="img" aria-label="profile"></span>
-        testprofile
-      </a>
       <a href="/myStudyCards">
         <span role="img" aria-label="my study cards"></span>
         My Study Cards
       </a>
-      
       <a href="https://ucae.uncc.edu/academic-support-services/tutoring">
         <span role="img" aria-label="tutoring center"></span>
         Tutoring Center
