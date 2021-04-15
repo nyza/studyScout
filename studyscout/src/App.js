@@ -8,6 +8,9 @@ import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
 import ProfilePage from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import Profile from "./components/Profile";
+import Registration from './Registration/Registration';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 // import Profile from "./components/Profile";
 // import ProfilePage from "./ProfilePage/ProfilePage";
@@ -20,11 +23,14 @@ function App() {
  
   return (
     
+    
+
     <ThemeProvider theme={theme}>
        <>
         <div className="App">
+      
           <Router>
-        
+          <Link to="/Registration">Registration</Link>
             <div>
 
             <Navbar />
@@ -35,11 +41,11 @@ function App() {
                 <Route exact path="/studyCard">
                   <StudyCard />
                 </Route>
-                <Route exact path="/Profile">
-                  <ProfilePage />
-                </Route>
-                <Route exact path="/profilePage">
-                  <ProfilePage />
+                <Route exact path="/Registration">
+                  <Registration />
+                  </Route> 
+                <Route exact path="/profile">
+                  <Profile />
                 </Route>
                 <Route exact path="/myStudyCards">
                   <PopOut />
