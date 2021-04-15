@@ -11,7 +11,6 @@ import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Profile from "./components/Profile";
 import Registration from './Registration/Registration';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 /* import Auth from '@aws-amplify/auth'; */
 import { Auth, Amplify } from 'aws-amplify'
 
