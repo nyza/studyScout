@@ -6,10 +6,14 @@ import { theme } from './theme';
 import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
+import ProfilePage from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Profile from "./components/Profile";
 import Registration from './Registration/Registration';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+// import Profile from "./components/Profile";
+// import ProfilePage from "./ProfilePage/ProfilePage";
 
 function App() {
 
@@ -43,6 +47,9 @@ function App() {
                 <Route exact path="/profile">
                   <Profile />
                 </Route>
+                <Route exact path="/myStudyCards">
+                  <PopOut />
+                </Route>
               </Switch>
             </div>
           </Router>
@@ -52,10 +59,8 @@ function App() {
          
        </>
     
-     
    </ThemeProvider> 
-    
-    
+
   );
 }
 export default withAuthenticator(App);
