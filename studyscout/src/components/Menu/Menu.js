@@ -8,7 +8,7 @@ import { AmplifySignOut } from '@aws-amplify/ui-react'
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <a href="/Profile">
+      <a href="/profile">
         <span role="img" aria-label="profile"></span>
         Profile
       </a>
