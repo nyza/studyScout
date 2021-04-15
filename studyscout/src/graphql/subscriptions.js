@@ -12,6 +12,7 @@ export const onCreateCards = /* GraphQL */ `
       time
       meetingLink
       capacity
+      emailID
       createdAt
       updatedAt
       owner
@@ -29,6 +30,7 @@ export const onUpdateCards = /* GraphQL */ `
       time
       meetingLink
       capacity
+      emailID
       createdAt
       updatedAt
       owner
@@ -46,6 +48,7 @@ export const onDeleteCards = /* GraphQL */ `
       time
       meetingLink
       capacity
+      emailID
       createdAt
       updatedAt
       owner

@@ -4,6 +4,8 @@ import { useOnClickOutside } from '../../hooks';
 import logo from '../../images/logo.png'
 import Burger from '../Burger';
 import Menu from '../Menu';
+import avatar from '../../images/avatar.png'
+import plus from '../../images/plus.png'
 
 
 const Navbar = () => {
@@ -20,17 +22,18 @@ const Navbar = () => {
              </div>
 
              <NavLink to="/">
-                 <img src={logo} alt={"logo"} />
+                 <img src={logo} alt={"logo"} style={{padding: 850}}/>
              </NavLink>
 
-             <NavBtn>
-                 <NavBtnLink to="/studyCard"> New Card</NavBtnLink>
-             </NavBtn>
+             <NavLink to="/studyCard" >
+             <img src={plus} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10,overflow: "hidden"}} />
+             </NavLink> 
 
-             <NavBtn>
-                 <NavBtnLink to="/profile"> Profile</NavBtnLink>
-             </NavBtn>
-             
+            
+             <NavLink to="/profile" >
+             <img src={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10,overflow: "hidden"}} />
+             </NavLink> 
+           
          </Nav>   
         </>
     )

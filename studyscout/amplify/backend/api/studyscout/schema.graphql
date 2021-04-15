@@ -9,6 +9,7 @@ type Cards
   time:String
   meetingLink: String!
   capacity: String!
+  emailID: String!
 }
 
 type User @model {

@@ -9,6 +9,9 @@ import PopOut from "./StudyCards/Study_popout";
 import ProfilePage from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+/* import Auth from '@aws-amplify/auth'; */
+import { Auth, Amplify } from 'aws-amplify'
+
 // import Profile from "./components/Profile";
 // import ProfilePage from "./ProfilePage/ProfilePage";
 
@@ -17,7 +20,9 @@ function App() {
   const [ setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
- 
+  console.log(Auth.currentAuthenticatedUser());
+  console.log(Auth.user.attributes.email)
+
   return (
     
     <ThemeProvider theme={theme}>

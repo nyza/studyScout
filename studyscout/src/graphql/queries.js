@@ -12,6 +12,7 @@ export const getCards = /* GraphQL */ `
       time
       meetingLink
       capacity
+      emailID
       createdAt
       updatedAt
       owner
@@ -34,6 +35,7 @@ export const listCardss = /* GraphQL */ `
         time
         meetingLink
         capacity
+        emailID
         createdAt
         updatedAt
         owner
