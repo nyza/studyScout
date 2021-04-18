@@ -1,6 +1,6 @@
 {
   "auth": {
-    "studyscout6c12d9d8": {
+    "studyScout": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -8,7 +8,7 @@
     }
   },
   "api": {
-    "studyscout": {
+    "studyScout": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -16,18 +16,16 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authstudyscout6c12d9d8"
+              "userPoolId": "authstudyScout"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
-    }
-  },
-  "storage": {
-    "storage": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
     }
   }
 }

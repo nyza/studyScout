@@ -1,25 +1,10 @@
-type Cards
-  @model @auth(rules: [ {allow: owner } ]) 
-  {
+type Cards @model @auth(rules: [{allow: private}]) {
   id: ID!
-  courseName: String
-  contentName: String!
-  hostName: String
-  date: String!
-  time:String
-  meetingLink: String!
-  capacity: String!
-  emailID: String!
+  ContentName: String!
+  Creator: String!
+  Capacity: Int!
+  HostName: String!
+  Time: String!
+  CourseName: String!
+  MeetingInfo: String!
 }
-
-type User @model {
-  id: ID!
-  username: String!
-  avatar: S3Object
-}
-
-type S3Object {
-  bucket: String!
-  region: String!
-  key: String!
-}  
