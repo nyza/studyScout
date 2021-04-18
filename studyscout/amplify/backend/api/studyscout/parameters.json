@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "studyscout",
+  "AppSyncApiName": "studyScout",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authstudyscout6c12d9d8",
+      "authstudyScout",
       "Outputs.UserPoolId"
     ]
   }
