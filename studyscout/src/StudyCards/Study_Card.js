@@ -4,6 +4,7 @@ import {createCards} from '../graphql/mutations'
 import API, { graphqlOperation } from '@aws-amplify/api';
 import {onCreateCards} from '../graphql/subscriptions'
 import TextField from '@material-ui/core/TextField';
+import Auth from '@aws-amplify/auth';
 
 class StudyCard extends Component{
     constructor(props){
@@ -16,6 +17,7 @@ class StudyCard extends Component{
             date:'',
             cards:[],
             capacity:'',
+            creator:'',
            
         };
          this.onChange = this.onChange.bind(this);
@@ -57,7 +59,7 @@ class StudyCard extends Component{
             const card = {hostName, courseName, contentName, capacity, date,meetingLink}
             const cards = [...this.state.cards, card]
             this.setState({
-                cards, hostName:'',contentName:'', courseName:'', capacity:'',meetingLink:'',date:''})
+                cards, hostName:'',contentName:'', courseName:'', capacity:'',meetingLink:'',date:'', creator:Auth.currentUserInfo.email})
             await API.graphql(graphqlOperation(createCards, {input:card}))
             
             console.log('cards created')
@@ -92,6 +94,7 @@ class StudyCard extends Component{
                <br/>
                <input className="input_box" type="text" name="meetingLink" value={this.state.meetingLink} onChange={this.onChange} placeholder="     Meeting Information"/>
                <br/>
+
                <input className="input_box"  name="capacity" value={this.state.capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
                <button className="submit">

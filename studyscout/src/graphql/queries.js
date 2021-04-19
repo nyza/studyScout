@@ -5,17 +5,18 @@ export const getCards = /* GraphQL */ `
   query GetCards($id: ID!) {
     getCards(id: $id) {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -28,56 +29,54 @@ export const listCardss = /* GraphQL */ `
     listCardss(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        courseName
-        contentName
-        hostName
-        date
-        time
-        meetingLink
-        capacity
-        emailID
+        ContentName
+        Creator
+        Capacity
+        HostName
+        Time
+        CourseName
+        MeetingInfo
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
-        owner
       }
       nextToken
+      startedAt
     }
   }
 `;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
+export const syncCards = /* GraphQL */ `
+  query SyncCards(
+    $filter: ModelCardsFilterInput
     $limit: Int
     $nextToken: String
+    $lastSync: AWSTimestamp
   ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    syncCards(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
       items {
         id
-        username
-        avatar {
-          bucket
-          region
-          key
-        }
+        ContentName
+        Creator
+        Capacity
+        HostName
+        Time
+        CourseName
+        MeetingInfo
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
   }
 `;
