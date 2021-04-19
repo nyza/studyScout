@@ -8,17 +8,18 @@ export const createCards = /* GraphQL */ `
   ) {
     createCards(input: $input, condition: $condition) {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -29,17 +30,18 @@ export const updateCards = /* GraphQL */ `
   ) {
     updateCards(input: $input, condition: $condition) {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
@@ -50,69 +52,16 @@ export const deleteCards = /* GraphQL */ `
   ) {
     deleteCards(input: $input, condition: $condition) {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }

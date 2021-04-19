@@ -21,7 +21,7 @@ export const schema = {
                     "name": "Creator",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "Capacity": {
@@ -88,5 +88,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "9eff10ba9440fa68b168d624ea24ba32"
+    "version": "763411df696b6cbf3378ecb2b164fae5"
 };

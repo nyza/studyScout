@@ -1,10 +1,11 @@
 type Cards @model @auth(rules: [{allow: private}]) {
   id: ID!
   ContentName: String!
-  Creator: String!
+  Creator: String
   Capacity: Int!
   HostName: String!
   Time: String!
   CourseName: String!
   MeetingInfo: String!
 }
+ 

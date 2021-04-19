@@ -7,7 +7,7 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 export declare class Cards {
   readonly id: string;
   readonly ContentName: string;
-  readonly Creator: string;
+  readonly Creator?: string;
   readonly Capacity: number;
   readonly HostName: string;
   readonly Time: string;

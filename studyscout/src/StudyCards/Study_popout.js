@@ -37,8 +37,11 @@ class PopOut extends Component{
     async componentDidMount(){
         console.log("inside component did mount")
         try{
+           
             const apiData = await API.graphql(graphqlOperation(listCardss))
+            console.log(apiData)
             const response = apiData.data.listCardss.items
+           
             this.setState({
                 cards:response
             })
@@ -72,13 +75,14 @@ class PopOut extends Component{
             <div >
                {this.state.cards.map((card, i)=>(
                 <div key={i} className="container2">
-               <h3 className="text_study">{card.courseName}</h3>
-               <h3 className="text_study">{card.contentName}</h3>
-               <h3 className="text_study">Hosted by {card.hostName}</h3>
-               <h3 className="text_study">{card.date}</h3>
+               <h3 className="text_study">{card.CourseName}</h3>
+               <h3 className="text_study">{card.ContentName}</h3>
+               <h3 className="text_study">Hosted by {card.HostName}</h3>
+               {/* <h3 className="text_study">Hosted by {card.Creator}</h3> */}
+               <h3 className="text_study">{card.Time}</h3>
                <h3 className="text_study">Meeting Link:</h3>
-               <h3 className="text_study">{card.meetingLink}</h3>
-               <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.capacity} Spots Remaining</h3>
+               <h3 className="text_study">{card.MeetingInfo}</h3>
+               <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.Capacity} Spots Remaining</h3>
                <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button>
                <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button>
                

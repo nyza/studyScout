@@ -2,99 +2,57 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCards = /* GraphQL */ `
-  subscription OnCreateCards($owner: String!) {
-    onCreateCards(owner: $owner) {
+  subscription OnCreateCards {
+    onCreateCards {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onUpdateCards = /* GraphQL */ `
-  subscription OnUpdateCards($owner: String!) {
-    onUpdateCards(owner: $owner) {
+  subscription OnUpdateCards {
+    onUpdateCards {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onDeleteCards = /* GraphQL */ `
-  subscription OnDeleteCards($owner: String!) {
-    onDeleteCards(owner: $owner) {
+  subscription OnDeleteCards {
+    onDeleteCards {
       id
-      courseName
-      contentName
-      hostName
-      date
-      time
-      meetingLink
-      capacity
-      emailID
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      username
-      avatar {
-        bucket
-        region
-        key
-      }
+      ContentName
+      Creator
+      Capacity
+      HostName
+      Time
+      CourseName
+      MeetingInfo
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
