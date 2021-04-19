@@ -10,14 +10,14 @@ class StudyCard extends Component{
     constructor(props){
         super(props);
         this.state = {
-             hostName:'',
-             contentName:'',
-            courseName:'',
-            meetingLink:'',
-            date:'',
+            HostName:'',
+            ContentName:'',
+            CourseName:'',
+            MeetingInfo:'',
+            Time:'',
             cards:[],
-            capacity:'',
-            creator:'',
+            Capacity:'',
+            Creator:'',
            
         };
          this.onChange = this.onChange.bind(this);
@@ -53,18 +53,29 @@ class StudyCard extends Component{
     
     createCards = async () =>{
         console.log("inside createCards")
-        const {hostName, courseName, contentName, meetingLink, date,capacity} =this.state
-        if( contentName==='' || meetingLink==='' ||  capacity==='' || hostName=== '' || courseName ==="" || date ==='') return
+        const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
+      
+
+
+        if( ContentName==='' || MeetingInfo==='' ||  Capacity==='' || HostName=== '' || CourseName ==="" ) return
         try{
-            const card = {hostName, courseName, contentName, capacity, date,meetingLink}
+            
+            const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
             const cards = [...this.state.cards, card]
             this.setState({
-                cards, hostName:'',contentName:'', courseName:'', capacity:'',meetingLink:'',date:'', creator:Auth.currentUserInfo.email})
+                cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:Auth.user.attributes.email})
+              
             await API.graphql(graphqlOperation(createCards, {input:card}))
-            
+            console.log("host",HostName)
+            console.log("Topic",ContentName)
+            console.log("class",CourseName)
+            console.log("Meetin",MeetingInfo)
+            console.log("Time",Time)
+            console.log("Capacity",Capacity)
+            console.log("creator", Creator)
             console.log('cards created')
           /* Remove this line of code when we figure out how subscriptions work */
-          window.location.reload();
+         // window.location.reload();
         }catch(err){
             console.log('error: ', err)
         }
@@ -77,7 +88,7 @@ class StudyCard extends Component{
             <div>
             <div className="study_card">
                <h3 className="text_study">Create a new study card</h3>
-               <select  className="drop_box" value={this.state.courseName} name="courseName" onChange={this.onChange} >
+               <select  className="drop_box" value={this.state.CourseName} name="CourseName" onChange={this.onChange} >
                    <option value="" disabled>Select Class</option>
                    {
                        ["ITCS-4155", "ITCS-4325", "ITCS-5432"].map((i,j)=>{
@@ -86,16 +97,16 @@ class StudyCard extends Component{
                    }
                 </select>
                 <br/>
-               <input className="input_box" type="text" name="hostName" value={this.state.hostName} onChange={this.onChange} placeholder="     host name"/>
+               <input className="input_box" type="text" name="HostName" value={this.state.HostName} onChange={this.onChange} placeholder="     host name"/>
                <br/>
-               <input className="input_box" type="text" name="contentName" value={this.state.contentName} onChange={this.onChange} placeholder="     Topic"/>
+               <input className="input_box" type="text" name="ContentName" value={this.state.ContentName} onChange={this.onChange} placeholder="     Topic"/>
                <br/>
-               <TextField   type="datetime-local" className="input_box" name="date" onChange={this.onChange} value={this.state.date} InputLabelProps={{shrink: false,}}/>
+               <TextField   type="datetime-local" className="input_box" name="Time" onChange={this.onChange} value={this.state.Time} InputLabelProps={{shrink: false,}}/>
                <br/>
-               <input className="input_box" type="text" name="meetingLink" value={this.state.meetingLink} onChange={this.onChange} placeholder="     Meeting Information"/>
+               <input className="input_box" type="text" name="MeetingInfo" value={this.state.MeetingInfo} onChange={this.onChange} placeholder="     Meeting Information"/>
                <br/>
 
-               <input className="input_box"  name="capacity" value={this.state.capacity} onChange={this.onChange} placeholder="     Number Of People"/>
+               <input className="input_box"  name="Capacity" value={this.state.Capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
                <button className="submit">
                     <Link to='' onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Create Card </Link>
