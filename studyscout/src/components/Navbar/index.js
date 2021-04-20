@@ -22,16 +22,16 @@ const Navbar = () => {
              </div>
 
              <NavLink to="/">
-                 <img src={logo} alt={"logo"} style={{padding: 850}}/>
+                 <img src={logo} alt={"logo"} style={{borderWidth: 3, borderColor: "black", width: 250, height: 80}}/>
              </NavLink>
 
              <NavLink to="/studyCard" >
-             <img src={plus} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10,overflow: "hidden"}} />
+             <img src={plus} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10, overflow: "visible"}} />
              </NavLink> 
 
             
              <NavLink to="/profile" >
-             <img src={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10,overflow: "hidden"}} />
+             <img src={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10, overflow: "hidden"}} />
              </NavLink> 
            
          </Nav>   
