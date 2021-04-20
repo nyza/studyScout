@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   background: ${({ theme }) => theme.primaryLight};
   height: 100vh;
   text-align: left;

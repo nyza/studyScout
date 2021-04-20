@@ -22,7 +22,7 @@ const Navbar = () => {
              </div>
 
              <NavLink to="/">
-                 <img src={logo} alt={"logo"} style={{padding: 850}}/>
+                <img src={logo} alt={"logo"} style={{padding: 150}}/>
              </NavLink>
 
              <NavLink to="/studyCard" >
