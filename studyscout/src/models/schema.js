@@ -27,7 +27,7 @@ export const schema = {
                 "Capacity": {
                     "name": "Capacity",
                     "isArray": false,
-                    "type": "Int",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -42,7 +42,7 @@ export const schema = {
                     "name": "Time",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "CourseName": {
@@ -88,5 +88,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "763411df696b6cbf3378ecb2b164fae5"
+    "version": "e3a894dbae6b1a133e25e4389a8aec75"
 };

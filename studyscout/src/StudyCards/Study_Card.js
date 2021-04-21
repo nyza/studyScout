@@ -16,7 +16,7 @@ class StudyCard extends Component{
             MeetingInfo:'',
             Time:'',
             cards:[],
-            Capacity:'',
+            Capacity:0,
             Creator:'',
            
         };
@@ -53,17 +53,18 @@ class StudyCard extends Component{
     
     createCards = async () =>{
         console.log("inside createCards")
+       
         const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
       
 
 
-        if( ContentName==='' || MeetingInfo==='' ||  Capacity==='' || HostName=== '' || CourseName ==="" ) return
+        if( ContentName==='' || MeetingInfo==='' ||  !Capacity || HostName=== '' || CourseName ==="" ) return
         try{
             
             const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
             const cards = [...this.state.cards, card]
             this.setState({
-                cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:Auth.user.attributes.email})
+                cards, HostName:'',ContentName:'', CourseName:'', Capacity:0,MeetingInfo:'',Time:'', Creator:Auth.user.attributes.email})
               
             await API.graphql(graphqlOperation(createCards, {input:card}))
             console.log("host",HostName)
@@ -74,6 +75,7 @@ class StudyCard extends Component{
             console.log("Capacity",Capacity)
             console.log("creator", Creator)
             console.log('cards created')
+           // console.log(card._version)
           /* Remove this line of code when we figure out how subscriptions work */
          // window.location.reload();
         }catch(err){
@@ -106,7 +108,7 @@ class StudyCard extends Component{
                <input className="input_box" type="text" name="MeetingInfo" value={this.state.MeetingInfo} onChange={this.onChange} placeholder="     Meeting Information"/>
                <br/>
 
-               <input className="input_box"  name="Capacity" value={this.state.Capacity} onChange={this.onChange} placeholder="     Number Of People"/>
+               <input className="input_box" type="number" name="Capacity" value={this.state.Capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
                <button className="submit">
                     <Link to='' onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Create Card </Link>

@@ -2,7 +2,7 @@ type Cards @model @auth(rules: [{allow: private}]) {
   id: ID!
   ContentName: String!
   Creator: String
-  Capacity: Int!
+  Capacity: String!
   HostName: String!
   Time: String
   CourseName: String!
