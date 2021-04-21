@@ -18,7 +18,6 @@ class StudyCard extends Component{
             cards:[],
             Capacity:0,
             Creator:Auth.user.attributes.email,
-           
         };
          this.onChange = this.onChange.bind(this);
 
@@ -58,13 +57,16 @@ class StudyCard extends Component{
       
 
 
+
         if( ContentName==='' || MeetingInfo==='' ||  !Capacity || HostName=== '' || CourseName ==="" || Creator ==='') return
+
         try{
             
             const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
             const cards = [...this.state.cards, card]
             this.setState({
                 cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:''})
+
               
             card.Creator = Auth.user.attributes.email
             await API.graphql(graphqlOperation(createCards, {input:card}))
