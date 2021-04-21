@@ -4,7 +4,7 @@ import {createCards} from '../graphql/mutations'
 import API, { graphqlOperation } from '@aws-amplify/api';
 import {onCreateCards} from '../graphql/subscriptions'
 import TextField from '@material-ui/core/TextField';
-import Auth from '@aws-amplify/auth';
+import { Auth, Amplify } from 'aws-amplify'
 
 class StudyCard extends Component{
     constructor(props){
@@ -17,7 +17,7 @@ class StudyCard extends Component{
             Time:'',
             cards:[],
             Capacity:0,
-            Creator:'',
+            Creator:Auth.user.attributes.email,
            
         };
          this.onChange = this.onChange.bind(this);
@@ -58,14 +58,15 @@ class StudyCard extends Component{
       
 
 
-        if( ContentName==='' || MeetingInfo==='' ||  !Capacity || HostName=== '' || CourseName ==="" ) return
+        if( ContentName==='' || MeetingInfo==='' ||  !Capacity || HostName=== '' || CourseName ==="" || Creator ==='') return
         try{
             
             const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
             const cards = [...this.state.cards, card]
             this.setState({
-                cards, HostName:'',ContentName:'', CourseName:'', Capacity:0,MeetingInfo:'',Time:'', Creator:Auth.user.attributes.email})
+                cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:''})
               
+            card.Creator = Auth.user.attributes.email
             await API.graphql(graphqlOperation(createCards, {input:card}))
             console.log("host",HostName)
             console.log("Topic",ContentName)

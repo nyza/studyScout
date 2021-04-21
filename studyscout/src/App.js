@@ -21,8 +21,8 @@ function App() {
   const [ setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  console.log(Auth.currentAuthenticatedUser());
-  console.log(Auth.user.attributes.email)
+  //console.log(Auth.currentAuthenticatedUser());
+ console.log(Auth.user.attributes.email)
 
   return (
     

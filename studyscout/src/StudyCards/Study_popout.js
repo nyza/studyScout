@@ -40,8 +40,10 @@ class PopOut extends Component{
            
             const apiData = await API.graphql(graphqlOperation(listCardss))
             console.log(apiData)
+
+
             const response = apiData.data.listCardss.items
-           
+           console.log(response)
             this.setState({
                 cards:response
             })
