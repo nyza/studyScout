@@ -15,9 +15,6 @@ export const createCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -37,9 +34,6 @@ export const updateCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -59,9 +53,6 @@ export const deleteCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
