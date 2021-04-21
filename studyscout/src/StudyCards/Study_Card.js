@@ -37,27 +37,24 @@ class StudyCard extends Component{
     //                         r.hostName !== card.hostName && r.courseName !== card.courseName &&
     //                         r.cotentName !== card.cotentName && r.meetingLink !== card.meetingLink
     //                         && r.date !== card.date && r.capacity !== card.capacity 
-    //                     )
-    //                 }),
-    //                 card
-    //             ]
-    //             this.setState([cards])
-    //         }
+    //        //         }
     //     })
     // }
 
     // componentWillUnmount(){
     //     this.subscription.unsubscribe()
-    // }
+    // }             )
+    //                 }),
+    //                 card
+    //             ]
+    //             this.setState([cards])
+    
     
     createCards = async () =>{
         console.log("inside createCards")
        
         const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
       
-
-
-
         if( ContentName==='' || MeetingInfo==='' ||  Capacity=== '' || HostName=== '' || CourseName ==="" || Creator ==='') return
 
         try{
