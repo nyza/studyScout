@@ -16,7 +16,7 @@ class StudyCard extends Component{
             MeetingInfo:'',
             Time:'',
             cards:[],
-            Capacity:0,
+            Capacity:'',
             Creator:Auth.user.attributes.email,
         };
          this.onChange = this.onChange.bind(this);
@@ -58,7 +58,7 @@ class StudyCard extends Component{
 
 
 
-        if( ContentName==='' || MeetingInfo==='' ||  !Capacity || HostName=== '' || CourseName ==="" || Creator ==='') return
+        if( ContentName==='' || MeetingInfo==='' ||  Capacity=== '' || HostName=== '' || CourseName ==="" || Creator ==='') return
 
         try{
             
