@@ -7,6 +7,7 @@ import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
 import MyStudyCards from "../src/MyStudyCards/MyStudyCards";
+import EditCard from "../src/EditCard/EditCard";
 import UserProfile from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
@@ -53,7 +54,11 @@ function App() {
                 </Route>
                 <Route exact path="/myStudyCards">
                   <h1>My Study Cards</h1>
-                  <MyStudyCards />
+                  <MyStudyCards /> 
+                </Route>
+                <Route exact path="/EditCard">
+                  <h1>Edit Cards on this Page</h1>
+                  <EditCard /> 
                 </Route>
               </Switch>
             </div>
