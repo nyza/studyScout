@@ -1,6 +1,7 @@
 import React, {Component}from 'react'
 import { Link } from 'react-router-dom'
-import {createCards} from '../graphql/mutations'
+import { getCards } from '../graphql/queries'
+import {updateCards} from '../graphql/mutations'
 import API, { graphqlOperation } from '@aws-amplify/api';
 import {onCreateCards} from '../graphql/subscriptions'
 import TextField from '@material-ui/core/TextField';
@@ -10,6 +11,7 @@ class EditCard extends Component{
     constructor(props){
         super(props);
         this.state = {
+            id:'',
             HostName:'',
             ContentName:'',
             CourseName:'',
@@ -23,50 +25,80 @@ class EditCard extends Component{
 
     }
     
+    async componentWillMount(){
+    console.log("inside component did mount")
+    const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
+
+    try{
+
+
+        const apiData = await API.graphql(graphqlOperation(getCards, { id: localStorage.getItem('cardid') }));
+        console.log(apiData)
+        console.log(apiData.data.getCards.id)
+        const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
+        const cards = [...this.state.cards, card]
+        this.setState({
+            cards,
+            id:apiData.data.getCards.id,
+            HostName:apiData.data.getCards.HostName, 
+            ContentName:apiData.data.getCards.ContentName, 
+            CourseName:apiData.data.getCards.CourseName, 
+            Capacity:apiData.data.getCards.Capacity, 
+            MeetingInfo:apiData.data.getCards.MeetingInfo, 
+            Time:apiData.data.getCards.Time, 
+            Creator:apiData.data.getCards.Creator})
+     
+    }catch(err){
+        console.log('error: ', err)
+    }
+
+
+
+    }
+
+    // loadData = async () =>{
+    //     const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
+
+    //     try{
+    //         console.log("inside loadData");
+
+    //         const apiData = await API.graphql(graphqlOperation(getCards, { id: localStorage.getItem('cardid') }));
+    //         console.log(apiData)
+    //         console.log(apiData.data.getCards.id)
+    //         const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
+    //         const cards = [...this.state.cards, card]
+    //         this.setState({
+    //             cards, HostName:apiData.data.getCards.HostName, ContentName:'', CourseName:'', Capacity:'', MeetingInfo:'', Time:'', Creator:''})
+
+         
+    //     }catch(err){
+    //         console.log('error: ', err)
+    //     }
+    // }
+
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value })
       }
-
-    // async componentDidMount(){
-    //     this.subscription = API.graphql(graphqlOperation(onCreateCards)).subscribe({
-    //         next: cardsDate => {
-    //             const card = cardsDate.value.data.onCreateCards
-    //             const cards = [
-    //                 ...this.state.cards.filter(r => {
-    //                     return(
-    //                         r.hostName !== card.hostName && r.courseName !== card.courseName &&
-    //                         r.cotentName !== card.cotentName && r.meetingLink !== card.meetingLink
-    //                         && r.date !== card.date && r.capacity !== card.capacity 
-    //        //         }
-    //     })
-    // }
-
-    // componentWillUnmount(){
-    //     this.subscription.unsubscribe()
-    // }             )
-    //                 }),
-    //                 card
-    //             ]
-    //             this.setState([cards])
     
     
-    createCards = async () =>{
-        console.log("inside createCards")
+    updateCards = async () =>{
+        console.log("inside updateCards")
        
-        const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
+        const {id, HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
       
-        if( ContentName==='' || MeetingInfo==='' ||  Capacity=== '' || HostName=== '' || CourseName ==="" || Creator ==='') return
+        if(id==='' || ContentName==='' || MeetingInfo==='' ||  Capacity=== '' || HostName=== '' || CourseName ==="" || Creator ==='') return
 
         try{
             
-            const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
+            const card = {id, HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
             const cards = [...this.state.cards, card]
             this.setState({
-                cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:''})
+                cards, id:'', HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:''})
 
               
             card.Creator = Auth.user.attributes.email
-            await API.graphql(graphqlOperation(createCards, {input:card}))
+            card.id = localStorage.getItem('cardid');
+            await API.graphql(graphqlOperation(updateCards, {input:card}))
             console.log("host",HostName)
             console.log("Topic",ContentName)
             console.log("class",CourseName)
@@ -83,9 +115,9 @@ class EditCard extends Component{
         }
     }
 
-
     render(){
         console.log("inside new create card render")
+
         return(
             <div>
             <div className="study_card">
@@ -99,7 +131,7 @@ class EditCard extends Component{
                    }
                 </select>
                 <br/>
-               <input className="input_box" type="text" name="HostName" value={this.state.HostName} onChange={this.onChange} placeholder="     host name"/>
+               <input className="input_box" type="text" name="HostName" value={this.state.HostName} onChange={this.onChange} placeholder="       HostName  "/>
                <br/>
                <input className="input_box" type="text" name="ContentName" value={this.state.ContentName} onChange={this.onChange} placeholder="     Topic"/>
                <br/>
@@ -111,7 +143,7 @@ class EditCard extends Component{
                <input className="input_box" type="number" name="Capacity" value={this.state.Capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
                <button className="submit">
-                    <Link to='' onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Update Card </Link>
+                    <Link to="/myStudyCards" onClick={this.updateCards} style={{ color: "black",  textDecoration: 'none' }}> Update Card </Link>
                </button>
            </div>
            </div>

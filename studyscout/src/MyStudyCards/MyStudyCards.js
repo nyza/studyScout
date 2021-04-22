@@ -55,6 +55,17 @@ class MyStudyCards extends Component{
         }
 
     }
+    editCards = async (id) =>{
+        if( id==='') return
+        try{
+            console.log("inside edit");
+            localStorage.setItem('cardid', id);
+            console.log(localStorage.getItem('cardid'));
+            window.location.href = "/EditCard"
+        }catch(err){
+            console.log('error: ', err)
+        }
+    }
 
     deleteCards = async  (id) =>{
         if( id==='') return
@@ -73,7 +84,6 @@ class MyStudyCards extends Component{
         }
     }
 
-
     render(){
       
         return(
@@ -90,7 +100,7 @@ class MyStudyCards extends Component{
                <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.Capacity} Spots Remaining</h3>
               {/* Edit Button */}
              {/*  <button className="submit" onClick> Edit </button> */}
-             <a href="/EditCard">Edit</a>
+             <button className="submit" onClick={()=>  this.editCards(card.id)}> Edit </button>
               {/* <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button> */}
                <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button>
                
