@@ -88,7 +88,10 @@ class MyStudyCards extends Component{
                <h3 className="text_study">Meeting Link:</h3>
                <h3 className="text_study">{card.MeetingInfo}</h3>
                <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.Capacity} Spots Remaining</h3>
-               <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button>
+              {/* Edit Button */}
+             {/*  <button className="submit" onClick> Edit </button> */}
+             <a href="/EditCard">Edit</a>
+              {/* <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button> */}
                <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button>
                
                </div>
