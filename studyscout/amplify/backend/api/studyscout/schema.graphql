@@ -1,3 +1,12 @@
+type User @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  Joined_Cards: [String]
+  Name: String!
+  Bio: String
+  Profile_Pic: String
+  email: String!
+}
+
 type Cards @model @auth(rules: [{allow: private}]) {
   id: ID!
   ContentName: String!
