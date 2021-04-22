@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import { Multiselect } from 'multiselect-react-dropdown';
-
+import {createUser} from '../graphql/mutations'
+import { Auth } from 'aws-amplify'
+import API, { graphqlOperation } from '@aws-amplify/api';
 class ProfilePage extends Component{
     constructor(props) {
         super(props);
@@ -10,6 +12,14 @@ class ProfilePage extends Component{
             Password: "",
             Bio: "",
             ClassList: "",
+            Joined_Cards:[],
+            email:Auth.user.attributes.email,
+            Profile_Pic:"",
+            users:[],
+
+
+
+            
         };
         this.handleChange=this.handleChange.bind(this)
     }
@@ -18,6 +28,34 @@ class ProfilePage extends Component{
         this.setState({
             [event.target.name]: event.target.value
         })
+    }
+
+
+    createUser = async () =>{
+        console.log("inside create users")
+       
+        const {Name, email} =this.state
+      
+        if( Name==='' || email==='') return
+
+        try{
+            
+            const user = {Name, email}
+            const users = [...this.state.users, user]
+            this.setState({
+                users, Name:'',email:''})
+              
+            user.email = Auth.user.attributes.email
+            await API.graphql(graphqlOperation(createUser, {input:user}))
+            console.log("NAme",Name)
+            console.log("email",email)
+         
+           // console.log(card._version)
+          /* Remove this line of code when we figure out how subscriptions work */
+          window.location.reload();
+        }catch(err){
+            console.log('error: ', err)
+        }
     }
 
     render() {
