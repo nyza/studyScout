@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import { Auth, Amplify } from 'aws-amplify'
 
 class StudyCard extends Component{
+   
     constructor(props){
         super(props);
         this.state = {
@@ -77,7 +78,7 @@ class StudyCard extends Component{
             console.log('cards created')
            // console.log(card._version)
           /* Remove this line of code when we figure out how subscriptions work */
-         // window.location.reload();
+          window.location.reload();
         }catch(err){
             console.log('error: ', err)
         }
