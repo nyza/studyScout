@@ -16,6 +16,7 @@ class StudyCard extends Component{
             CourseName:'',
             MeetingInfo:'',
             Time:'',
+            count:0,
             cards:[],
             Capacity:'',
             Creator:Auth.user.attributes.email,
@@ -54,18 +55,18 @@ class StudyCard extends Component{
     createCards = async () =>{
         console.log("inside createCards")
        
-        const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity, Creator} =this.state
+        const {HostName, CourseName, ContentName, MeetingInfo, Time,Capacity,count, Creator} =this.state
       
         if( ContentName==='' || MeetingInfo==='' ||  Capacity=== '' || HostName=== '' || CourseName ==="" || Creator ==='') return
 
         try{
             
-            const card = {HostName, CourseName, ContentName, Capacity, Time,MeetingInfo, Creator}
+            const card = {HostName, CourseName, ContentName,count, Capacity, Time,MeetingInfo, Creator}
             const cards = [...this.state.cards, card]
             this.setState({
-                cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:''})
+                cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:'', count:''})
 
-              
+            card.count=0
             card.Creator = Auth.user.attributes.email
             await API.graphql(graphqlOperation(createCards, {input:card}))
             console.log("host",HostName)
@@ -75,10 +76,11 @@ class StudyCard extends Component{
             console.log("Time",Time)
             console.log("Capacity",Capacity)
             console.log("creator", Creator)
+            console.log("count", count)
             console.log('cards created')
            // console.log(card._version)
           /* Remove this line of code when we figure out how subscriptions work */
-          window.location.reload();
+         // window.location.reload();
         }catch(err){
             console.log('error: ', err)
         }
