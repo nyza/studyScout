@@ -5,8 +5,8 @@ import { API, graphqlOperation } from 'aws-amplify'
 import { listCardss } from '../graphql/queries'
 import {deleteCards} from '../graphql/mutations'
 import {onDeleteCards} from '../graphql/subscriptions';
-
-
+import {updateCards} from '../graphql/mutations'
+import { Auth, Amplify } from 'aws-amplify'
 
 
 class PopOut extends Component{
@@ -14,25 +14,42 @@ class PopOut extends Component{
         super()
         this.state={
             cards:[],
-            counter:0,
-            buttonText:"Join Session"
-        }
+            count:0,
+            buttonText:"Join Session", 
+            
+     
+        };
+        
     }
 
-    handleClick = () => {
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+      }
 
-      
-        switch (this.state.buttonText) {
-          case "Join Session":
+      editCards = async (Card,) =>{
+         
+        console.log("inside edit");
+        localStorage.setItem('cardid', Card.id);
+        localStorage.setItem('count', Card.count);
+        console.log("Card", Card)
+
+
+             switch (this.state.buttonText) {
+             case "Join Session":
             this.setState({buttonText:"Leave Session"});
-            this.setState({counter:this.state.counter+1})
+            await API.graphql(graphqlOperation(updateCards, {input:{id:localStorage.getItem('cardid'), count:parseInt(localStorage.getItem('count'))+1}}))
             break;
-          default:
+            case "Leave Session":
             this.setState({buttonText:"Join Session"});
-            this.setState({counter:this.state.counter-1})
+            if(parseInt(localStorage.getItem('count'))>0){
+                await API.graphql(graphqlOperation(updateCards,  {input:{id:localStorage.getItem('cardid'), count:parseInt(localStorage.getItem('count'))-1}}))
+            }
             break;
+            default:
+
         }
-      };
+    }
+       
 
     async componentDidMount(){
         console.log("inside component did mount")
@@ -70,10 +87,9 @@ class PopOut extends Component{
             console.log('error: ', err)
         }
     }
-
+  
 
     render(){
-      
         return(
             <div >
                {this.state.cards.map((card, i)=>(
@@ -85,8 +101,8 @@ class PopOut extends Component{
                <h3 className="text_study">{card.Time}</h3>
                <h3 className="text_study">Meeting Link:</h3>
                <h3 className="text_study">{card.MeetingInfo}</h3>
-               <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.Capacity} Spots Remaining</h3>
-               <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button>
+               <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{card.count}/{card.Capacity} Spots Remaining</h3>
+               <button className="submit" onClick={()=>  this.editCards(card)} > {this.state.buttonText}</button>
                <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button>
                
                </div>

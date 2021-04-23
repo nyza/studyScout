@@ -16,4 +16,5 @@ type Cards @model @auth(rules: [{allow: private}]) {
   Time: String
   CourseName: String!
   MeetingInfo: String!
+  count: Int
 }

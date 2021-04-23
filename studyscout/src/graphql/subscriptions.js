@@ -9,6 +9,7 @@ export const onCreateUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -22,6 +23,7 @@ export const onUpdateUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -35,6 +37,7 @@ export const onDeleteUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -51,6 +54,7 @@ export const onCreateCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }
@@ -67,6 +71,7 @@ export const onUpdateCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }
@@ -83,6 +88,7 @@ export const onDeleteCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }

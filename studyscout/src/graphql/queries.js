@@ -9,6 +9,7 @@ export const getUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -27,6 +28,7 @@ export const listUsers = /* GraphQL */ `
         Name
         Bio
         Profile_Pic
+        email
         createdAt
         updatedAt
       }
@@ -45,6 +47,7 @@ export const getCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }
@@ -66,6 +69,7 @@ export const listCardss = /* GraphQL */ `
         Time
         CourseName
         MeetingInfo
+        count
         createdAt
         updatedAt
       }
