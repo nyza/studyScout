@@ -27,8 +27,6 @@ function App() {
  console.log(Auth.user.attributes.email)
 
   return (
-    
-    
 
     <ThemeProvider theme={theme}>
        <>

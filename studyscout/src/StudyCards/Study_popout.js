@@ -1,11 +1,10 @@
 
 
-import React, {Component}from 'react'
-import { API, graphqlOperation } from 'aws-amplify'
+import React, {Component, useState}from 'react'
+import { API, Auth, graphqlOperation } from 'aws-amplify'
 import { listCardss } from '../graphql/queries'
 import {deleteCards} from '../graphql/mutations'
 import {onDeleteCards} from '../graphql/subscriptions';
-
 
 
 
@@ -18,6 +17,7 @@ class PopOut extends Component{
             buttonText:"Join Session"
         }
     }
+
 
     handleClick = () => {
 
@@ -54,6 +54,19 @@ class PopOut extends Component{
         
     }
 
+    editCards = async (id) =>{
+        if( id==='') return
+        try{
+            console.log("inside edit");
+            localStorage.setItem('cardid', id);
+            console.log(localStorage.getItem('cardid'));
+            window.location.href = "/EditCard"
+        }catch(err){
+            console.log('error: ', err)
+        }
+    }
+
+
     deleteCards = async  (id) =>{
         if( id==='') return
         try{
@@ -71,8 +84,9 @@ class PopOut extends Component{
         }
     }
 
-
     render(){
+
+
       
         return(
             <div >
@@ -86,10 +100,11 @@ class PopOut extends Component{
                <h3 className="text_study">Meeting Link:</h3>
                <h3 className="text_study">{card.MeetingInfo}</h3>
                <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.Capacity} Spots Remaining</h3>
-               <button className="submit" onClick={this.handleClick} > {this.state.buttonText}</button>
-               <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button>
+
+               {renderButton(card.Creator, card.id)}
+              {/* <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(card.id)}}> Remove </button> */}
                
-               </div>
+            </div>
            ))}
            
            </div>
@@ -99,4 +114,16 @@ class PopOut extends Component{
     }
 }
 export default PopOut
+
+function renderButton(creator, id){
+    if(Auth.user.attributes.email === creator) {
+        return [
+                <button className="submit" onClick={()=>  this.editCards(id)}> Edit </button>,
+                <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(id)}}> Remove </button>
+         ] } else {
+        // return (
+        //      // <button className="submit" onClick={()=> this.handleclick} > {}</button>
+        // )
+    }
+}
 

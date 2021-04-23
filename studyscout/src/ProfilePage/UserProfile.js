@@ -48,7 +48,7 @@ class ProfilePage extends Component{
             await API.graphql(graphqlOperation(createUser, {input:user}))
                      
             user.Creator = Auth.user.attributes.email
-            console.log("NAme",Name)
+            console.log("Name",Name)
             console.log("email",email)
             console.log("Bio",Bio)
             console.log("joined",Joined_Cards)
