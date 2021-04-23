@@ -6,7 +6,6 @@ import { listCardss } from '../graphql/queries'
 import {deleteCards} from '../graphql/mutations'
 import {onDeleteCards} from '../graphql/subscriptions';
 import {updateCards} from '../graphql/mutations'
-import { Auth, Amplify } from 'aws-amplify'
 
 class PopOut extends Component{
     constructor(){
@@ -21,10 +20,6 @@ class PopOut extends Component{
         
     }
 
-<<<<<<< HEAD
-
-    handleClick = () => {
-=======
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value })
       }
@@ -35,7 +30,6 @@ class PopOut extends Component{
         localStorage.setItem('cardid', Card.id);
         localStorage.setItem('count', Card.count);
         console.log("Card", Card)
->>>>>>> 873cac5896f9694dd92e76469e367841a8dfb5f4
 
 
              switch (this.state.buttonText) {
