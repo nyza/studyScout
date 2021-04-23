@@ -12,6 +12,7 @@ export const createUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -28,6 +29,7 @@ export const updateUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -44,6 +46,7 @@ export const deleteUser = /* GraphQL */ `
       Name
       Bio
       Profile_Pic
+      email
       createdAt
       updatedAt
     }
@@ -63,6 +66,7 @@ export const createCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }
@@ -82,6 +86,7 @@ export const updateCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }
@@ -101,6 +106,7 @@ export const deleteCards = /* GraphQL */ `
       Time
       CourseName
       MeetingInfo
+      count
       createdAt
       updatedAt
     }

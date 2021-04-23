@@ -97,7 +97,7 @@ class MyStudyCards extends Component{
                <h3 className="text_study">{card.Time}</h3>
                <h3 className="text_study">Meeting Link:</h3>
                <h3 className="text_study">{card.MeetingInfo}</h3>
-               <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{this.state.counter}/{card.Capacity} Spots Remaining</h3>
+               <h3 className="text_study" style={{paddingTop:15, fontSize:15}}>{card.count}/{card.Capacity} Spots Remaining</h3>
               {/* Edit Button */}
              {/*  <button className="submit" onClick> Edit </button> */}
              <button className="submit" onClick={()=>  this.editCards(card.id)}> Edit </button>

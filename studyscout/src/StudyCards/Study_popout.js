@@ -5,34 +5,55 @@ import { API, Auth, graphqlOperation } from 'aws-amplify'
 import { listCardss } from '../graphql/queries'
 import {deleteCards} from '../graphql/mutations'
 import {onDeleteCards} from '../graphql/subscriptions';
-
-
+import {updateCards} from '../graphql/mutations'
+import { Auth, Amplify } from 'aws-amplify'
 
 class PopOut extends Component{
     constructor(){
         super()
         this.state={
             cards:[],
-            counter:0,
-            buttonText:"Join Session"
-        }
+            count:0,
+            buttonText:"Join Session", 
+            
+     
+        };
+        
     }
 
+<<<<<<< HEAD
 
     handleClick = () => {
+=======
+    onChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+      }
 
-      
-        switch (this.state.buttonText) {
-          case "Join Session":
+      editCards = async (Card,) =>{
+         
+        console.log("inside edit");
+        localStorage.setItem('cardid', Card.id);
+        localStorage.setItem('count', Card.count);
+        console.log("Card", Card)
+>>>>>>> 873cac5896f9694dd92e76469e367841a8dfb5f4
+
+
+             switch (this.state.buttonText) {
+             case "Join Session":
             this.setState({buttonText:"Leave Session"});
-            this.setState({counter:this.state.counter+1})
+            await API.graphql(graphqlOperation(updateCards, {input:{id:localStorage.getItem('cardid'), count:parseInt(localStorage.getItem('count'))+1}}))
             break;
-          default:
+            case "Leave Session":
             this.setState({buttonText:"Join Session"});
-            this.setState({counter:this.state.counter-1})
+            if(parseInt(localStorage.getItem('count'))>0){
+                await API.graphql(graphqlOperation(updateCards,  {input:{id:localStorage.getItem('cardid'), count:parseInt(localStorage.getItem('count'))-1}}))
+            }
             break;
+            default:
+
         }
-      };
+    }
+       
 
     async componentDidMount(){
         console.log("inside component did mount")
