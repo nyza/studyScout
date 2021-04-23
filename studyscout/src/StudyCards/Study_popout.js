@@ -133,8 +133,8 @@ export default PopOut
 function renderButton(creator, id){
     if(Auth.user.attributes.email === creator) {
         return [
-                <button className="submit" onClick={()=>  this.editCards(id)}> Edit </button>,
-                <button className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(id)}}> Remove </button>
+                <button key="uniqueId1" className="submit" onClick={()=>  this.editCards(id)}> Edit </button>,
+                <button key="uniqueId2" className="submit" onClick={()=>  {if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(id)}}> Remove </button>
          ] } else {
         // return (
         //      // <button className="submit" onClick={()=> this.handleclick} > {}</button>
