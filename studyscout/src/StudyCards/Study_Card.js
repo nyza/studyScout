@@ -79,9 +79,9 @@ class StudyCard extends Component{
             console.log("count", count)
             console.log('cards created')
 
-        // DELAY
-        setTimeout(console.log('cards created'), 2000);       
-  
+        // DELAY HERE
+     
+        window.location.href = "/"
                 
         }catch(err){
             console.log('error: ', err)
