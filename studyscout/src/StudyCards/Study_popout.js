@@ -71,6 +71,9 @@ class PopOut extends Component {
         var arrayList = returnedUser.data.listUsers.items[0].Joined_Cards
         console.log('arrayList: ', arrayList)
 
+        if (arrayList === null) {
+            arrayList = [];
+        }
 
         if (arrayList.includes(id)) {
             //true
@@ -80,10 +83,6 @@ class PopOut extends Component {
         } else {
             //false
             console.log("Card not found")
-
-            if (arrayList === null) {
-                arrayList = [];
-            }
 
             arrayList.push(id);
             console.log('pushed array list is: ', arrayList)
