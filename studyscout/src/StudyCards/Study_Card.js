@@ -66,7 +66,7 @@ class StudyCard extends Component{
             this.setState({
                 cards, HostName:'',ContentName:'', CourseName:'', Capacity:'',MeetingInfo:'',Time:'', Creator:'', count:''})
 
-            card.count=0
+            card.count=1
             card.Creator = Auth.user.attributes.email
             await API.graphql(graphqlOperation(createCards, {input:card}))
             console.log("host",HostName)
@@ -78,9 +78,11 @@ class StudyCard extends Component{
             console.log("creator", Creator)
             console.log("count", count)
             console.log('cards created')
-           // console.log(card._version)
-          /* Remove this line of code when we figure out how subscriptions work */
-         // window.location.reload();
+
+        // DELAY
+        setTimeout(console.log('cards created'), 2000);       
+  
+                
         }catch(err){
             console.log('error: ', err)
         }
@@ -114,7 +116,7 @@ class StudyCard extends Component{
                <input className="input_box" type="number" name="Capacity" value={this.state.Capacity} onChange={this.onChange} placeholder="     Number Of People"/>
                <br/>
                <button className="submit">
-                    <Link to='' onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Create Card </Link>
+                    <button onClick={this.createCards} style={{ color: "black",  textDecoration: 'none' }}> Create Card </button>
                </button>
            </div>
            </div>

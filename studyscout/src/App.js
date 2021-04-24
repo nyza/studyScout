@@ -52,7 +52,9 @@ function App() {
                 </Route>
                 <Route exact path="/myStudyCards">
                   <h1>My Study Cards</h1>
+                  <h3>Created Study Cards</h3>
                   <MyStudyCards /> 
+                  <h3>Joined Study Cards</h3>
                 </Route>
                 <Route exact path="/EditCard">
                   <h1>Edit Cards on this Page</h1>
