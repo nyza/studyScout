@@ -14,6 +14,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Registration from './Registration/Registration';
 /* import Auth from '@aws-amplify/auth'; */
 import { Auth, Amplify } from 'aws-amplify'
+import "../src/components/layout.css"
 
 // import Profile from "./components/Profile";
 // import ProfilePage from "./ProfilePage/ProfilePage";
