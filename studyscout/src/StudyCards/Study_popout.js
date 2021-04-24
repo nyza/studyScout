@@ -5,6 +5,7 @@ import { API, Auth, graphqlOperation } from 'aws-amplify'
 import { getCards, listUsers, listCardss } from '../graphql/queries'
 import { deleteCards, updateCards, updateUser } from '../graphql/mutations'
 import { onDeleteCards } from '../graphql/subscriptions';
+//import { MyVerticallyCenteredModal} from '../components/Modal';
 
 class PopOut extends Component {
     constructor() {
@@ -74,7 +75,8 @@ class PopOut extends Component {
         if (arrayList.includes(id)) {
             //true
             console.log("Already Added this card")
-            window.confirm('You have alread joined this card')
+           window.confirm('You have alread joined this card')
+           //MyVerticallyCenteredModal();
         } else {
             //false
             console.log("Card not found")
