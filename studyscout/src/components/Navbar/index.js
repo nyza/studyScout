@@ -41,7 +41,7 @@ const Navbar = () => {
 
             
              <NavLink to="/profile" >
-             <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10, overflow: "hidden"}} />
+             <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 50, overflow: "hidden"}} />
              </NavLink> 
            
          </Nav>   
