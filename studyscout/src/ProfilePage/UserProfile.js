@@ -1,43 +1,47 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Multiselect } from 'multiselect-react-dropdown';
 import avatar from '../images/avatar.png'
-import {createUser, updateUser} from '../graphql/mutations'
+import { createUser, updateUser } from '../graphql/mutations'
 import { Auth } from 'aws-amplify'
 import API, { graphqlOperation } from '@aws-amplify/api';
 import { getUser } from '../graphql/queries';
 import { Link } from 'react-router-dom'
 import { listUsers } from '../graphql/queries'
+import S3FileUpload from 'react-s3'
+import { Uploading } from '../components/Uploading'
 
 
 
-class ProfilePage extends Component{
+class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             Name: "",
-            id:"",
+            id: "",
             EmailAddress: "",
             Password: "*********",
             Bio: "",
             ClassList: "",
-            Joined_Cards:[],
-            email:Auth.user.attributes.email,
-            Profile_Pic:"",
-            users:[],
-            options: [{name: 'ITCS-2214-011', id: 1},{name: 'ITCS-4112-012', id: 2},{name: 'ITCS-3162-001', id: 3},
-                       {name: 'STAT-3150-045', ID:4},{name: 'ITIS-3130-003', id: 5}],
-            };
-        this.handleChange=this.handleChange.bind(this)
+            Joined_Cards: [],
+            email: Auth.user.attributes.email,
+            Profile_Pic: "",
+            users: [],
+            options: [{ name: 'ITCS-2214-011', id: 1 }, { name: 'ITCS-4112-012', id: 2 }, { name: 'ITCS-3162-001', id: 3 },
+            { name: 'STAT-3150-045', ID: 4 }, { name: 'ITIS-3130-003', id: 5 }],
+        };
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    handleChange(event){
+    handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
 
-    async componentWillMount(){
+    async componentWillMount() {
+
+
         const userEmail = Auth.user.attributes.email
 
         console.log('userEmail: ', userEmail)
@@ -53,78 +57,86 @@ class ProfilePage extends Component{
         localStorage.setItem('userid', returnedUser.data.listUsers.items[0].id);
 
 
-        console.log("userId" , localStorage.getItem('userid'));
+        console.log("userId", localStorage.getItem('userid'));
         console.log("inside component did mount")
-        const {Name, Bio, ClassList, email,Profile_Pic} =this.state
-    
-        try{
+        const { Name, Bio, ClassList, email, Profile_Pic } = this.state
+
+        try {
             const apiData = await API.graphql(graphqlOperation(getUser, { id: localStorage.getItem('userid') }));
             console.log(apiData)
             console.log(apiData.data.getUser.id)
-            const user = {Name, Bio, ClassList, email,Profile_Pic}
+            const user = { Name, Bio, ClassList, email, Profile_Pic }
             const users = [...this.state.users, user]
             this.setState({
                 users,
-                id:apiData.data.getUser.id,
-                Name:apiData.data.getUser.Name, 
-                ClassList:apiData.data.getUser.ClassList, 
-                email:apiData.data.getUser.email, 
-                Bio:apiData.data.getUser.Bio, 
-             })
-         
-        }catch(err){
-            console.log('error: ', err)
-        }
-        }
+                id: apiData.data.getUser.id,
+                Name: apiData.data.getUser.Name,
+                ClassList: apiData.data.getUser.ClassList,
+                email: apiData.data.getUser.email,
+                Bio: apiData.data.getUser.Bio,
+            })
 
-            
-    
-    updateUser = async () =>{
-        console.log("inside updateProfile s")
-       
-        const {id, Name, ClassList, email, Bio} =this.state
-      
-        if(id===''||  email=== '') return
-
-        try{
-            
-            const user = {id,Name, ClassList, email, Bio}
-            const users = [...this.state.users, user]
-            this.setState({
-                users, id:'', Name:'',ClassList:'', Bio:'', email:''})
-
-              
-            user.email = Auth.user.attributes.email
-            user.id = localStorage.getItem('userid');
-            await API.graphql(graphqlOperation(updateUser, {input:user}))
-            console.log('Bio', Bio)
-            console.log('Name', Name)
-            console.log('user created')
-            console.log('user created')
-        }catch(err){
+        } catch (err) {
             console.log('error: ', err)
         }
     }
 
-   
 
-    render() {
-        return(
-            <div className="Profile">
-          
+
+    updateUser = async () => {
+        console.log("inside updateProfile s")
+
+        const { id, Name, ClassList, email, Bio } = this.state
+
+        if (id === '' || email === '') return
+
+        try {
+
+            const user = { id, Name, ClassList, email, Bio }
+            const users = [...this.state.users, user]
+            this.setState({
+                users, id: '', Name: '', ClassList: '', Bio: '', email: ''
+            })
+
+
+            user.email = Auth.user.attributes.email
+            user.id = localStorage.getItem('userid');
+            await API.graphql(graphqlOperation(updateUser, { input: user }))
+            console.log('Bio', Bio)
+            console.log('Name', Name)
+            console.log('user created')
+            console.log('user created')
+        } catch (err) {
+            console.log('error: ', err)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+render() {
+    return (
+        <div className="Profile">
+
             <div class="row">
-              <div class="column">
-              <h3 className="heading">{       this.state.email}</h3>
-                <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name"/>
-                {/* <input className="display_box" type="text" name="EmailAddress" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> */}
-                {/* <input className="display_box" type="text" name="Password" value="********" onChange={this.handleChange} placeholder="Password"/> */}
-                <textarea className="display_box1" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="Bio"/>
-              </div>
+                <div class="column">
+                    <h3 className="heading">{this.state.email}</h3>
+                    <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name" />
+                    {/* <input className="display_box" type="text" name="EmailAddress" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> */}
+                    {/* <input className="display_box" type="text" name="Password" value="********" onChange={this.handleChange} placeholder="Password"/> */}
+                    <textarea className="display_box1" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="Bio" />
+                </div>
 
-              <div class="column">
-              <h3 className="heading">Class List</h3>
-              {/* <input className="display_box2" type="display" name="ClassList" value={this.state.ClassList} onChange={this.handleChange} placeholder="" /> */}
-              {/* <select  className="display_box" value={this.state.drop} name="ClassList" onChange={this.handleChange}>
+                <div class="column">
+                    <h3 className="heading">Class List</h3>
+                    {/* <input className="display_box2" type="display" name="ClassList" value={this.state.ClassList} onChange={this.handleChange} placeholder="" /> */}
+                    {/* <select  className="display_box" value={this.state.drop} name="ClassList" onChange={this.handleChange}>
                    {/*<option value="">Select</option>
                    {
                        ["ITCS-2214", 
@@ -136,32 +148,36 @@ class ProfilePage extends Component{
                             return <option key={i} value={i}>{i}</option>
                         })
                    }
-                </select> */} 
-                
-                <Multiselect
-                options={this.state.options} 
-                name="ClassList"
-                selectedValues={this.state.selectedValue} 
-                onSelect={this.onSelect} 
-                onRemove={this.onRemove} 
-                displayValue="name" 
-                /> 
-              </div>  
-              <div class="column">
-                <label class="header"></label>
+                </select> */}
+
+                    <Multiselect
+                        options={this.state.options}
+                        name="ClassList"
+                        selectedValues={this.state.selectedValue}
+                        onSelect={this.onSelect}
+                        onRemove={this.onRemove}
+                        displayValue="name"
+                    />
+                </div>
+                <div class="column">
+
+                    <div>{Uploading()}</div>
+           
+                    {/* //{Uploading()} */}
+                    {/* <label class="header"></label>
                 <img src={avatar} className="profile_photo" width="200" height="200" alt={avatar}/>
-                <input id="image" type="file" className="profile_photo" placeholder="Photo" capture></input> 
+                <input id="image" type="file" className="profile_photo" placeholder="Photo" capture></input>  */}
                 </div>
             </div>
             <button className="submit">
-                    <Link to="/" onClick={this.updateUser} style={{ color: "black",  textDecoration: 'none' }}> Update Card </Link>
+                <Link to="/" onClick={this.updateUser} style={{ color: "black", textDecoration: 'none' }}> Update Card </Link>
             </button>
             <button className="cancel">
-                    <Link to="/" onClick={this} style={{ color: "black",  textDecoration: 'none' }}> Cancel </Link>
+                <Link to="/"  style={{ color: "black", textDecoration: 'none' }}> Cancel </Link>
             </button>
-  
+
         </div>
-        )
-    }
+    )
+}
 }
 export default ProfilePage;

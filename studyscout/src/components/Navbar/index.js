@@ -6,12 +6,22 @@ import Burger from '../Burger';
 import Menu from '../Menu';
 import avatar from '../../images/avatar.png'
 import plus from '../../images/plus.png'
+import Auth from '@aws-amplify/auth';
+import API, { graphqlOperation } from '@aws-amplify/api';
+import { getCards, listUsers, listCardss } from '../../graphql/queries'
+
 
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const node = useRef();
    useOnClickOutside(node, () => setOpen(false));
+
+
+
+
+
+
     return (
         <>
          <Nav>
@@ -31,7 +41,7 @@ const Navbar = () => {
 
             
              <NavLink to="/profile" >
-             <img src={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10, overflow: "hidden"}} />
+             <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{borderWidth: 3, borderColor: "black", width: 80, height: 80, borderRadius: 10, overflow: "hidden"}} />
              </NavLink> 
            
          </Nav>   
