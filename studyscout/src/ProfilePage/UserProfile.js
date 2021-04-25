@@ -111,22 +111,15 @@ class ProfilePage extends Component {
         }
     }
 
-
-
-
-
-
-
-
-
-
 render() {
     return (
         <div className="Profile">
 
             <div class="row">
                 <div class="column">
-                    <h3 className="heading">{this.state.email}</h3>
+                    <div>
+                    <h2 className="heading">    {this.state.email}</h2>
+                    </div>
                     <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name" />
                     {/* <input className="display_box" type="text" name="EmailAddress" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> */}
                     {/* <input className="display_box" type="text" name="Password" value="********" onChange={this.handleChange} placeholder="Password"/> */}
@@ -134,7 +127,7 @@ render() {
                 </div>
 
                 <div class="column">
-                    <h3 className="heading">Class List</h3>
+                    <h2 className="heading">Class List</h2>
                     {/* <input className="display_box2" type="display" name="ClassList" value={this.state.ClassList} onChange={this.handleChange} placeholder="" /> */}
                     {/* <select  className="display_box" value={this.state.drop} name="ClassList" onChange={this.handleChange}>
                    {/*<option value="">Select</option>
@@ -162,11 +155,7 @@ render() {
                 <div class="column">
 
                     <div>{Uploading()}</div>
-           
-                    {/* //{Uploading()} */}
-                    {/* <label class="header"></label>
-                <img src={avatar} className="profile_photo" width="200" height="200" alt={avatar}/>
-                <input id="image" type="file" className="profile_photo" placeholder="Photo" capture></input>  */}
+    
                 </div>
             </div>
             <button className="submit">

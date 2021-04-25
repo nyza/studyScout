@@ -12,14 +12,35 @@ import UserProfile from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import { Auth, Amplify } from 'aws-amplify'
-import "../src/components/layout.css"
+import API, { graphqlOperation } from '@aws-amplify/api';
+import { getCards, listUsers, listCardss } from '../src/graphql/queries'
+//import "../src/components/layout.css"
 
-function App() {
+async function RunFirst()  {
+ // Sets the local storage user id and Profile_Pic
+ const userEmail = Auth.user.attributes.email
+ console.log('userEmail: ', userEmail)
+
+ const returnedUser = await API.graphql(graphqlOperation(listUsers, {
+     filter: {
+         email: {
+             eq: userEmail
+         }
+     }
+ }))
+console.log("App returnedUser",returnedUser)
+console.log("App loaded userid",returnedUser.data.listUsers.items[0].id)
+console.log("App loaded profilepicurl",returnedUser.data.listUsers.items[0].Profile_Pic)
+ localStorage.setItem('userid', returnedUser.data.listUsers.items[0].id);
+ localStorage.setItem('profilepicurl', returnedUser.data.listUsers.items[0].Profile_Pic);
+ //window.location.reload(false);
+}
+
+ function App() {
   const [ setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  //console.log(Auth.currentAuthenticatedUser());
- console.log(Auth.user.attributes.email)
+  RunFirst();
 
   return (
     <ThemeProvider theme={theme}>

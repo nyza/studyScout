@@ -42,14 +42,9 @@ export function Uploading() {
 
     return (
         <>
-            <div>
-                <div>
-                    <h3>Profile Picture</h3>
-                    <input type="file" onChange={upload} />
-                    <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{ borderWidth: 3, borderColor: "black", width: 400, height: 400
-                    , borderRadius: 10, overflow: "hidden" }} />
-                </div>
-            </div>
+            <h2>Profile Picture</h2>
+            <input type="file" onChange={upload} />
+            <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{ borderWidth: 8, borderColor: "black", width: 280, height: 280, borderRadius: 20, overflow: "hidden" }} />
         </>
     )
 }
