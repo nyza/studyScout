@@ -113,6 +113,16 @@
     border-radius: 6%;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
   }
+  .cancel{
+    width: 150px;
+    height: 40px;
+    background-color: #e22929;
+    color: white;
+    margin: 13px 12px 12px 10px;
+    cursor: pointer;
+    border: none; 
+    border-radius: 6%;
+  }
 
   .Profile{
     width: 80%;
