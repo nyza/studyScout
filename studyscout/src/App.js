@@ -14,6 +14,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import { Auth, Amplify } from 'aws-amplify'
 import API, { graphqlOperation } from '@aws-amplify/api';
 import { getCards, listUsers, listCardss } from '../src/graphql/queries'
+import avatar from '../src/images/avatar.png'
 //import "../src/components/layout.css"
 
 async function RunFirst()  {
@@ -31,9 +32,17 @@ async function RunFirst()  {
 console.log("App returnedUser",returnedUser)
 console.log("App loaded userid",returnedUser.data.listUsers.items[0].id)
 console.log("App loaded profilepicurl",returnedUser.data.listUsers.items[0].Profile_Pic)
+if(returnedUser.data.listUsers.items[0].Profile_Pic === null){
+  localStorage.setItem('profilepicurl', avatar);
+  console.log("Loading Default Avatar")
+  console.log("App.js this is whats stored for the default profile pic:",localStorage.getItem('profilepicurl'))
+} else {
+  localStorage.setItem('profilepicurl', returnedUser.data.listUsers.items[0].Profile_Pic);
+}
  localStorage.setItem('userid', returnedUser.data.listUsers.items[0].id);
- localStorage.setItem('profilepicurl', returnedUser.data.listUsers.items[0].Profile_Pic);
+ 
  //window.location.reload(false);
+
 }
 
  function App() {
