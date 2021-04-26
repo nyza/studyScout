@@ -21,13 +21,8 @@ class PopOut extends Component {
     }
 
     joinCard = async (id) => {
-
-        console.log('join id: ', id)
         const card = await API.graphql(graphqlOperation(getCards, { id: id }))
         const userEmail = Auth.user.attributes.email
-
-        console.log('userEmail: ', userEmail)
-
         const returnedUser = await API.graphql(graphqlOperation(listUsers, {
             filter: {
                 email: {
@@ -35,41 +30,27 @@ class PopOut extends Component {
                 }
             }
         }))
-
-        console.log('returnedUserID: ', returnedUser.data.listUsers.items[0].id)
         var arrayList = returnedUser.data.listUsers.items[0].Joined_Cards
-        console.log('arrayList: ', arrayList)
-
         if (arrayList === null) {
             arrayList = [];
         }
-
         if (arrayList.includes(id)) {
             //true
             console.log("Already Added this card")
-           window.confirm('You have alread joined this card')
-           //MyVerticallyCenteredModal();
+            window.confirm('You have alread joined this card')
         } else {
             //false
-            console.log("Card not found")
-
             arrayList.push(id);
-            console.log('pushed array list is: ', arrayList)
             await API.graphql(graphqlOperation(updateUser, { input: { id: returnedUser.data.listUsers.items[0].id, Joined_Cards: arrayList } }))
-            console.log('updated Joined_Cards cloud')
             var newcount = card.data.getCards.count + 1
             await API.graphql(graphqlOperation(updateCards, { input: { id: id, count: newcount } }))
-            console.log('updated count cloud')
             window.location.reload(false);
         }
     }
 
     leaveCard = async (id) => {
-
-        console.log('join id: ', id)
         const card = await API.graphql(graphqlOperation(getCards, { id: id }))
         const userEmail = Auth.user.attributes.email
-        console.log('userEmail: ', userEmail)
         const returnedUser = await API.graphql(graphqlOperation(listUsers, {
             filter: {
                 email: {
@@ -77,39 +58,25 @@ class PopOut extends Component {
                 }
             }
         }))
-        console.log('returnedUserID: ', returnedUser.data.listUsers.items[0].id)
         var arrayList = returnedUser.data.listUsers.items[0].Joined_Cards
-        console.log('arrayList: ', arrayList)
         if (arrayList === null || !arrayList.includes(id)) {
-            console.log("You have not joined this card")
             window.confirm('You have not joined this card')
         } else {
-            console.log("Card Found")
             arrayList.pop(id)
-        
             //Update Joined_Cards
-            console.log('popped array list is: ', arrayList)
             await API.graphql(graphqlOperation(updateUser, { input: { id: returnedUser.data.listUsers.items[0].id, Joined_Cards: arrayList } }))
-            console.log('updated Joined_Cards cloud')
             //Update count
-            console.log('leave id: ', id)
             const card = await API.graphql(graphqlOperation(getCards, { id: id }))
-    
             var newcount = card.data.getCards.count - 1
-            console.log('newcount (-1) : ', newcount)
             await API.graphql(graphqlOperation(updateCards, { input: { id: id, count: newcount } }))
             window.location.reload(false);
-
         }
     }
 
     async componentDidMount() {
-        console.log("inside component did mount")
         try {
             const apiData = await API.graphql(graphqlOperation(listCardss))
-            console.log(apiData)
             const response = apiData.data.listCardss.items
-            console.log(response)
             this.setState({
                 cards: response
             })
@@ -121,21 +88,16 @@ class PopOut extends Component {
     editCards = async (id) => {
         if (id === '') return
         try {
-            console.log("inside edit");
             localStorage.setItem('cardid', id);
-            console.log(localStorage.getItem('cardid'));
             window.location.href = "/EditCard"
         } catch (err) {
             console.log('error: ', err)
         }
     }
 
-
     deleteCards = async (id) => {
         if (id === '') return
         try {
-            console.log("inside delete");
-            console.log(id);
             //console.log();
             const input = { id };
             const newCardArray = this.state.cards.filter(card => card.id !== id);
@@ -149,7 +111,6 @@ class PopOut extends Component {
     }
 
     renderButton(creator, id) {
-
         if (Auth.user.attributes.email === creator) {
             return [
                 <button key="uniqueId1" className="submit" onClick={() => this.editCards(id)}> Edit </button>,

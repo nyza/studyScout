@@ -111,25 +111,25 @@ class ProfilePage extends Component {
         }
     }
 
-render() {
-    return (
-        <div className="Profile">
+    render() {
+        return (
+            <div className="Profile">
 
-            <div class="row">
-                <div class="column">
-                    <div>
-                    <h2 className="heading">    {this.state.email}</h2>
+                <div class="row">
+                    <div class="column">
+                        <div>
+                            <h2 className="heading">    {this.state.email}</h2>
+                        </div>
+                        <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name" />
+                        {/* <input className="display_box" type="text" name="EmailAddress" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> */}
+                        {/* <input className="display_box" type="text" name="Password" value="********" onChange={this.handleChange} placeholder="Password"/> */}
+                        <textarea className="display_box1" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="Bio" />
                     </div>
-                    <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name" />
-                    {/* <input className="display_box" type="text" name="EmailAddress" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> */}
-                    {/* <input className="display_box" type="text" name="Password" value="********" onChange={this.handleChange} placeholder="Password"/> */}
-                    <textarea className="display_box1" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="Bio" />
-                </div>
 
-                <div class="column">
-                    <h2 className="heading">Class List</h2>
-                    {/* <input className="display_box2" type="display" name="ClassList" value={this.state.ClassList} onChange={this.handleChange} placeholder="" /> */}
-                    {/* <select  className="display_box" value={this.state.drop} name="ClassList" onChange={this.handleChange}>
+                    <div class="column">
+                        <h2 className="heading">Class List</h2>
+                        {/* <input className="display_box2" type="display" name="ClassList" value={this.state.ClassList} onChange={this.handleChange} placeholder="" /> */}
+                        {/* <select  className="display_box" value={this.state.drop} name="ClassList" onChange={this.handleChange}>
                    {/*<option value="">Select</option>
                    {
                        ["ITCS-2214", 
@@ -143,30 +143,30 @@ render() {
                    }
                 </select> */}
 
-                    <Multiselect
-                        options={this.state.options}
-                        name="ClassList"
-                        selectedValues={this.state.selectedValue}
-                        onSelect={this.onSelect}
-                        onRemove={this.onRemove}
-                        displayValue="name"
-                    />
-                </div>
-                <div class="column">
+                        <Multiselect
+                            options={this.state.options}
+                            name="ClassList"
+                            selectedValues={this.state.selectedValue}
+                            onSelect={this.onSelect}
+                            onRemove={this.onRemove}
+                            displayValue="name"
+                        />
+                    </div>
+                    <div class="column">
 
-                    <div>{Uploading()}</div>
-    
+                        <div>{Uploading()}</div>
+
+                    </div>
                 </div>
+                <button className="submit">
+                    <Link to="/" onClick={this.updateUser} style={{ color: "black", textDecoration: 'none' }}> Update Card </Link>
+                </button>
+                <button className="cancel">
+                    <Link to="/" style={{ color: "black", textDecoration: 'none' }}> Cancel </Link>
+                </button>
+
             </div>
-            <button className="submit">
-                <Link to="/" onClick={this.updateUser} style={{ color: "black", textDecoration: 'none' }}> Update Card </Link>
-            </button>
-            <button className="cancel">
-                <Link to="/"  style={{ color: "black", textDecoration: 'none' }}> Cancel </Link>
-            </button>
-
-        </div>
-    )
-}
+        )
+    }
 }
 export default ProfilePage;

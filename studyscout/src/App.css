@@ -99,7 +99,7 @@
 }
 
 .container2 {
-    width: 35%;
+    width: 35%; /*this was 35% before */
     margin: 13px 12px 12px 10px;
     border: 1px solid rgba(247, 247, 247);
     border-radius: 25px;

@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { useOnClickOutside } from './hooks';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
-import { withAuthenticator, AmplifyS3Image} from '@aws-amplify/ui-react'
+import { withAuthenticator } from '@aws-amplify/ui-react'
 import StudyCard from "./StudyCards/Study_Card";
 import PopOut from "./StudyCards/Study_popout";
 import MyStudyCards from "../src/MyStudyCards/MyStudyCards";
@@ -11,17 +11,14 @@ import EditCard from "../src/EditCard/EditCard";
 import UserProfile from "./ProfilePage/UserProfile";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import { Auth, Amplify } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 import API, { graphqlOperation } from '@aws-amplify/api';
-import { getCards, listUsers, listCardss } from '../src/graphql/queries'
+import { listUsers } from '../src/graphql/queries'
 import avatar from '../src/images/avatar.png'
-//import "../src/components/layout.css"
 
+// This function sets the localStorage user id and Profile_pic variables
 async function RunFirst()  {
- // Sets the local storage user id and Profile_Pic
  const userEmail = Auth.user.attributes.email
- console.log('userEmail: ', userEmail)
-
  const returnedUser = await API.graphql(graphqlOperation(listUsers, {
      filter: {
          email: {
@@ -29,23 +26,19 @@ async function RunFirst()  {
          }
      }
  }))
-console.log("App returnedUser",returnedUser)
-console.log("App loaded userid",returnedUser.data.listUsers.items[0].id)
-console.log("App loaded profilepicurl",returnedUser.data.listUsers.items[0].Profile_Pic)
 if(returnedUser.data.listUsers.items[0].Profile_Pic === null){
   localStorage.setItem('profilepicurl', avatar);
-  console.log("Loading Default Avatar")
-  console.log("App.js this is whats stored for the default profile pic:",localStorage.getItem('profilepicurl'))
 } else {
   localStorage.setItem('profilepicurl', returnedUser.data.listUsers.items[0].Profile_Pic);
 }
  localStorage.setItem('userid', returnedUser.data.listUsers.items[0].id);
- 
- //window.location.reload(false);
-
 }
 
  function App() {
+
+  require('dotenv').config();
+  console.log("env file bucket:",process.env.REACT_APP_BUCKETNAME)
+
   const [ setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
