@@ -98,7 +98,7 @@ class StudyCard extends Component{
                <select  className="drop_box" value={this.state.CourseName} name="CourseName" onChange={this.onChange} >
                    <option value="" disabled>Select Class</option>
                    {
-                       ["ITCS-4155", "ITCS-4325", "ITCS-5432"].map((i,j)=>{
+                       ["ECGR-3183", "ECGR-4146", "ITCS-3145", "ITCS 3166", "ITCS-3688", "ITCS-4155", "ITCS-4325", "ITCS-5432", "ITIS-3200", "MATH-2164", "STAT-2122"].map((i,j)=>{
                            return <option key={i} value={i}>{i}</option>
                        })
                    }

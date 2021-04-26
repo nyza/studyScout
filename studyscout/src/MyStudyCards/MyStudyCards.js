@@ -28,7 +28,7 @@ class MyStudyCards extends Component {
                 }
             }))
             const response = apiData.data.listCardss.items
-            console.log("response",response)
+            console.log("response", response)
             this.setState({
                 cards: response
             })
@@ -47,11 +47,11 @@ class MyStudyCards extends Component {
             const arrayLength = cardList.data.listCardss.items.length
             // FOR each card compare to Joined_Cards[0,1,2,3]
             var addarray = []
-            if(arrayLength !== 0){
-                for (var i = 0; i < arrayLength; i++){
+            if (arrayLength !== 0) {
+                for (var i = 0; i < arrayLength; i++) {
                     var tempid = cardList.data.listCardss.items[i].id
-                    if (arrayList.includes(tempid)){
-                       var tempcard = await API.graphql(graphqlOperation(getCards, { id: tempid }))
+                    if (arrayList.includes(tempid)) {
+                        var tempcard = await API.graphql(graphqlOperation(getCards, { id: tempid }))
                         addarray.push(tempcard.data.getCards)
                     }
                 }
@@ -105,7 +105,7 @@ class MyStudyCards extends Component {
         }
         if (arrayList.includes(id)) {
             //true
-           window.confirm('You have alread joined this card')
+            window.confirm('You have alread joined this card')
         } else {
             //false
             arrayList.push(id);
@@ -133,7 +133,7 @@ class MyStudyCards extends Component {
             window.confirm('You have not joined this card')
         } else {
             arrayList.pop(id)
-        
+
             //Update Joined_Cards
 
             await API.graphql(graphqlOperation(updateUser, { input: { id: returnedUser.data.listUsers.items[0].id, Joined_Cards: arrayList } }))
@@ -141,7 +141,7 @@ class MyStudyCards extends Component {
             //Update count
 
             const card = await API.graphql(graphqlOperation(getCards, { id: id }))
-    
+
             var newcount = card.data.getCards.count - 1
 
             await API.graphql(graphqlOperation(updateCards, { input: { id: id, count: newcount } }))
@@ -166,11 +166,9 @@ class MyStudyCards extends Component {
     }
 
     render() {
-
         return (
-       
             <div >
-                     <h1>My Study Cards</h1>
+                <h1>My Study Cards</h1>
                 <h2>Created Cards:</h2>
                 {this.state.cards.map((card, i) => (
                     <div key={i} className="container2">
@@ -180,11 +178,11 @@ class MyStudyCards extends Component {
                         <h3 className="text_study">{card.Time}</h3>
                         <h3 className="text_study">Meeting Link:</h3>
                         <h3 className="text_study">{card.MeetingInfo}</h3>
-                        <h3 className="text_study" style={{ paddingTop: 15, fontSize: 15 }}>{card.Capacity-card.count} Spots Remaining</h3>
+                        <h3 className="text_study" style={{ paddingTop: 15, fontSize: 15 }}>{card.Capacity - card.count} Spots Remaining</h3>
                         {this.renderButton(card.Creator, card.id)}
                     </div>
                 ))}
-            <h2>Joined Cards:</h2>
+                <h2>Joined Cards:</h2>
                 {this.state.cards2.map((card, i) => (
                     <div key={i} className="container2">
                         <h3 className="text_study">{card.CourseName}</h3>
@@ -193,7 +191,7 @@ class MyStudyCards extends Component {
                         <h3 className="text_study">{card.Time}</h3>
                         <h3 className="text_study">Meeting Link:</h3>
                         <h3 className="text_study">{card.MeetingInfo}</h3>
-                        <h3 className="text_study" style={{ paddingTop: 15, fontSize: 15 }}>{card.Capacity-card.count} Spots Remaining</h3>
+                        <h3 className="text_study" style={{ paddingTop: 15, fontSize: 15 }}>{card.Capacity - card.count} Spots Remaining</h3>
                         {this.renderButton(card.Creator, card.id)}
                     </div>
                 ))}
