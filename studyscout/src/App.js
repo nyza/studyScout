@@ -32,6 +32,17 @@ if(returnedUser.data.listUsers.items[0].Profile_Pic === null){
   localStorage.setItem('profilepicurl', returnedUser.data.listUsers.items[0].Profile_Pic);
 }
  localStorage.setItem('userid', returnedUser.data.listUsers.items[0].id);
+
+
+ 
+ var arrayList = returnedUser.data.listUsers.items[0].Joined_Cards
+ if (arrayList === null) {
+     arrayList = [];
+ }
+localStorage.setItem('arrayList',arrayList)
+console.log("App.js LS Joined_Cards:", localStorage.getItem('arrayList'))
+console.log("App.js LS userid:", localStorage.getItem('userid'))
+
 }
 
  function App() {
@@ -62,11 +73,9 @@ if(returnedUser.data.listUsers.items[0].Profile_Pic === null){
                   <UserProfile />
                 </Route>
                 <Route exact path="/myStudyCards">
-                  <h1>My Study Cards</h1>
                   <MyStudyCards /> 
                 </Route>
                 <Route exact path="/EditCard">
-                  <h1>Edit Cards on this Page</h1>
                   <EditCard /> 
                 </Route>
               </Switch>

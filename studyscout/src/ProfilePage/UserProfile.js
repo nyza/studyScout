@@ -37,15 +37,8 @@ class ProfilePage extends Component {
             [event.target.name]: event.target.value
         })
     }
-
-
     async componentWillMount() {
-
-
         const userEmail = Auth.user.attributes.email
-
-        console.log('userEmail: ', userEmail)
-
         const returnedUser = await API.graphql(graphqlOperation(listUsers, {
             filter: {
                 email: {
@@ -53,18 +46,10 @@ class ProfilePage extends Component {
                 }
             }
         }))
-
         localStorage.setItem('userid', returnedUser.data.listUsers.items[0].id);
-
-
-        console.log("userId", localStorage.getItem('userid'));
-        console.log("inside component did mount")
         const { Name, Bio, ClassList, email, Profile_Pic } = this.state
-
         try {
             const apiData = await API.graphql(graphqlOperation(getUser, { id: localStorage.getItem('userid') }));
-            console.log(apiData)
-            console.log(apiData.data.getUser.id)
             const user = { Name, Bio, ClassList, email, Profile_Pic }
             const users = [...this.state.users, user]
             this.setState({
@@ -75,37 +60,23 @@ class ProfilePage extends Component {
                 email: apiData.data.getUser.email,
                 Bio: apiData.data.getUser.Bio,
             })
-
         } catch (err) {
             console.log('error: ', err)
         }
     }
 
-
-
     updateUser = async () => {
-        console.log("inside updateProfile s")
-
         const { id, Name, ClassList, email, Bio } = this.state
-
         if (id === '' || email === '') return
-
         try {
-
             const user = { id, Name, ClassList, email, Bio }
             const users = [...this.state.users, user]
             this.setState({
                 users, id: '', Name: '', ClassList: '', Bio: '', email: ''
             })
-
-
             user.email = Auth.user.attributes.email
             user.id = localStorage.getItem('userid');
             await API.graphql(graphqlOperation(updateUser, { input: user }))
-            console.log('Bio', Bio)
-            console.log('Name', Name)
-            console.log('user created')
-            console.log('user created')
         } catch (err) {
             console.log('error: ', err)
         }
@@ -114,35 +85,16 @@ class ProfilePage extends Component {
     render() {
         return (
             <div className="Profile">
-
                 <div class="row">
                     <div class="column">
                         <div>
                             <h2 className="heading">    {this.state.email}</h2>
                         </div>
                         <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name" />
-                        {/* <input className="display_box" type="text" name="EmailAddress" value={this.state.email} onChange={this.handleChange} placeholder="Email"/> */}
-                        {/* <input className="display_box" type="text" name="Password" value="********" onChange={this.handleChange} placeholder="Password"/> */}
                         <textarea className="display_box1" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="Bio" />
                     </div>
-
                     <div class="column">
                         <h2 className="heading">Class List</h2>
-                        {/* <input className="display_box2" type="display" name="ClassList" value={this.state.ClassList} onChange={this.handleChange} placeholder="" /> */}
-                        {/* <select  className="display_box" value={this.state.drop} name="ClassList" onChange={this.handleChange}>
-                   {/*<option value="">Select</option>
-                   {
-                       ["ITCS-2214", 
-                        "ITCS-4112", 
-                        "ITCS-3162",
-                        "STAT-3150",
-                        "ITIS-3130"]
-                        .map((i,j)=>{
-                            return <option key={i} value={i}>{i}</option>
-                        })
-                   }
-                </select> */}
-
                         <Multiselect
                             options={this.state.options}
                             name="ClassList"
@@ -153,11 +105,10 @@ class ProfilePage extends Component {
                         />
                     </div>
                     <div class="column">
-
                         <div>{Uploading()}</div>
-
                     </div>
                 </div>
+
                 <button className="submit">
                     <Link to="/" onClick={this.updateUser} style={{ color: "black", textDecoration: 'none' }}> Update Card </Link>
                 </button>

@@ -37,7 +37,7 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
- .input_box{
+.input_box{
       width: 50%;
       padding: 12px 20px;
       margin: 8px 0;
@@ -45,6 +45,17 @@
       border: 1px solid rgb(29, 28, 28);
       border-radius: 25px;
       box-sizing: border-box;
+     }
+
+.input_box_filter{
+      width: 20%;
+      padding: 12px 20px;
+      margin: 15px 5px 5px 5px;
+      display:inline-block;
+      border: 2px solid rgb(77, 77, 77);
+      border-radius: 25px;
+      box-sizing: border-box;
+      text-align: center
      }
 
      :root {
@@ -122,6 +133,17 @@
     border-radius: 6%;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
   }
+  .filter_submit{
+    width: 150px;
+    height: 40px;
+    background-color: #777777;
+    color: white;
+    margin: 13px 12px 12px 10px;
+    cursor: pointer;
+    border: none; 
+    border-radius: 6%;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+  }
   .cancel{
     width: 150px;
     height: 40px;
@@ -131,12 +153,13 @@
     cursor: pointer;
     border: none; 
     border-radius: 6%;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
   }
 
   .Profile{
-    width: 80%;
-    height: 80vh;
-    margin: 12px 12px 12px 10px;
+    width: 70%;
+    height: 50vh;
+    margin: 100px 12px 12px 10px;
     display:inline-block;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
     border: 1px solid rgb(247, 247, 247);
@@ -185,6 +208,25 @@
 .column {
   float: left;
   width: 30%;
+  /* border: 1px solid rgb(247, 247, 247); */
+  /* width: 70%;
+  height: 50vh;
+  margin: 100px 12px 12px 10px;
+  display:inline-block;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+  border: 1px solid rgb(247, 247, 247);
+  border-radius: 50px;
+  box-sizing: border-box;
+  background-color: #BEBFCB; */
+}
+
+.row {
+ 
+  /* border: 1px solid rgb(0, 0, 0); */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display:flex;
 }
 
 .row:after {

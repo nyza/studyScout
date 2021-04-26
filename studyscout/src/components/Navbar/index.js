@@ -16,16 +16,9 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const node = useRef();
    useOnClickOutside(node, () => setOpen(false));
-
-   setTimeout(() => {  console.log("World!"); }, 200);
-
-
-
-
     return (
         <>
          <Nav>
-             
              <div>
              <Burger open={open} setOpen={setOpen} />
              <Menu open={open} setOpen={setOpen} />

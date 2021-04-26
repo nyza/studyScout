@@ -13,6 +13,7 @@ class PopOut extends Component {
             cards: [],
             count: 0,
             buttonText: "Join Session",
+            filtertext: "",
         };
     }
 
@@ -75,11 +76,32 @@ class PopOut extends Component {
 
     async componentDidMount() {
         try {
-            const apiData = await API.graphql(graphqlOperation(listCardss))
-            const response = apiData.data.listCardss.items
-            this.setState({
-                cards: response
-            })
+
+            if (localStorage.getItem('filterbool')) {
+                const text = localStorage.getItem('filtertext')
+                const apiData = await API.graphql(graphqlOperation(listCardss))
+                const cards = apiData.data.listCardss.items
+                var cardlist = []
+                for (var i = 0; i < cards.length; i++) {
+                    console.log("CN:", cards[i].CourseName)
+                    if (cards[i].CourseName.includes(text)) {
+                        cardlist.push(cards[i])
+                    }
+                }
+                this.setState({
+                    cards: cardlist
+                })
+
+                localStorage.setItem('filterbool', false)
+            } else {
+                const apiData = await API.graphql(graphqlOperation(listCardss))
+                const response = apiData.data.listCardss.items
+                this.setState({
+                    cards: response
+                })
+                localStorage.setItem('filterbool', false)
+            }
+
         } catch (err) {
             console.log('error : ', err)
         }
@@ -112,6 +134,7 @@ class PopOut extends Component {
 
     renderButton(creator, id) {
         if (Auth.user.attributes.email === creator) {
+
             return [
                 <button key="uniqueId1" className="submit" onClick={() => this.editCards(id)}> Edit </button>,
                 <button key="uniqueId2" className="submit" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCards(id) }}> Remove </button>
@@ -123,9 +146,25 @@ class PopOut extends Component {
             ]
         }
     }
+
+    filterButton(text) {
+        //Writes text to localStorage and set boolean flag to true
+        localStorage.setItem('filtertext', text)
+        if (text !== null)
+            localStorage.setItem('filterbool', true)
+        // refresh page
+        window.location.reload();
+    }
+
+
     render() {
         return (
             <div >
+                <div className="row">
+                    <input className="input_box_filter" type="text" name="filtertext" value={this.state.filtertext} onChange={this.onChange} placeholder="Filter Classes" />
+                    <button className="filter_submit" onClick={() => this.filterButton(this.state.filtertext)}>Filter / Reset</button>
+                </div>
+
                 {this.state.cards.map((card, i) => (
                     <div key={i} className="container2">
                         <h3 className="text_study">{card.CourseName}</h3>
