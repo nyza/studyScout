@@ -6,7 +6,7 @@ export const Nav = styled.nav`
     border-bottom: 5;
     height: 80px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding 0.5rem calc((100vw - 1000px) / 2);
     z-index: 10;
     border-bottom: 3px solid #707070;
@@ -29,7 +29,7 @@ export const NavLink = styled(Link)`
 export const NavBtn = styled.nav`
     display: flex;
     align-items: center;
-    margin-right: 24px;
+    margin-right: 5px;
 
     @media screen and (max-width: 768px) {
         display: none;
@@ -39,7 +39,7 @@ export const NavBtn = styled.nav`
 export const NavBtnLink = styled(Link)`
     border-radius: 4px;
     background: #707070;
-    padding: 10px 22px;
+    padding: 10px 5px;
     color: #fff;
     border: none;
     outline: none;

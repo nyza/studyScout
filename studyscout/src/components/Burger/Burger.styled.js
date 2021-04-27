@@ -1,9 +1,9 @@
 // Burger.styled.js
 import styled from 'styled-components';
 export const StyledBurger = styled.button`
-  position: absolute;
+  position: sticky;
   top: 30px;
-  left: 2rem;
+  left: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -23,7 +23,7 @@ export const StyledBurger = styled.button`
     width: 2rem;
     height: 0.25rem;
     background: #707070;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
