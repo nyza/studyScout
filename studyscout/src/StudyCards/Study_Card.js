@@ -104,7 +104,7 @@ class StudyCard extends Component{
                    }
                 </select>
                 <br/>
-               <input className="input_box" type="text" name="HostName" value={this.state.HostName} onChange={this.onChange} placeholder="     host name"/>
+               <input className="input_box" type="text" name="HostName" value={this.state.HostName} onChange={this.onChange} placeholder="     Host Name"/>
                <br/>
                <input className="input_box" type="text" name="ContentName" value={this.state.ContentName} onChange={this.onChange} placeholder="     Topic"/>
                <br/>

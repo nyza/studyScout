@@ -93,8 +93,8 @@ class ProfilePage extends Component {
                         <input className="display_box" type="text" name="Name" value={this.state.Name} onChange={this.handleChange} placeholder="Name" />
                         <textarea className="display_box1" type="text" name="Bio" value={this.state.Bio} onChange={this.handleChange} placeholder="Bio" />
                     </div>
-                    <div class="column">
-                        <h2 className="heading">Class List</h2>
+                    <div class="column2">
+                        {/* <h2 className="heading">Class List</h2>
                         <Multiselect
                             options={this.state.options}
                             name="ClassList"
@@ -102,7 +102,7 @@ class ProfilePage extends Component {
                             onSelect={this.onSelect}
                             onRemove={this.onRemove}
                             displayValue="name"
-                        />
+                        /> */}
                     </div>
                     <div class="column">
                         <div>{Uploading()}</div>

@@ -207,7 +207,22 @@
 
 .column {
   float: left;
-  width: 30%;
+  width: 40 %;
+  /* border: 1px solid rgb(247, 247, 247); */
+  /* width: 70%;
+  height: 50vh;
+  margin: 100px 12px 12px 10px;
+  display:inline-block;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+  border: 1px solid rgb(247, 247, 247);
+  border-radius: 50px;
+  box-sizing: border-box;
+  background-color: #BEBFCB; */
+}
+
+.column2 {
+  float: left;
+  width: 10%;
   /* border: 1px solid rgb(247, 247, 247); */
   /* width: 70%;
   height: 50vh;

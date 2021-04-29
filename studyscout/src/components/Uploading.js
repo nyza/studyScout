@@ -36,7 +36,7 @@ export function Uploading() {
         <>
             <h2>Profile Picture</h2>
             <input type="file" onChange={upload} />
-            <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{ borderWidth: 8, borderColor: "black", width: 280, height: 280, borderRadius: 20, overflow: "hidden" }} />
+            <img src={localStorage.getItem('profilepicurl')} alt={avatar} style={{ borderWidth: 8, borderColor: "black", width: 200, height: 200, borderRadius: 20, overflow: "hidden" }} />
         </>
     )
 }
